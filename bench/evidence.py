@@ -42,6 +42,9 @@ def resolve_requirement(alternatives: list[dict]) -> set[str]:
 
 
 if __name__ == "__main__":
+    from app.config import utf8_stdio
+
+    utf8_stdio()
     bad = 0
     for item in load_items():
         for k, req in enumerate(item["expected"].get("required_evidence", [])):

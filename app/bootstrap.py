@@ -5,6 +5,7 @@ else under data/ is derived and rebuilt here. Usage: python -m app.bootstrap
 """
 import hashlib
 import json
+import os
 import subprocess
 import sys
 
@@ -26,7 +27,8 @@ def verify_blobs() -> None:
 
 def step(module: str, *args: str) -> None:
     print(f"running    python -m {module} {' '.join(args)}".rstrip(), flush=True)
-    subprocess.run([sys.executable, "-W", "ignore", "-m", module, *args], check=True)
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    subprocess.run([sys.executable, "-W", "ignore", "-m", module, *args], check=True, env=env)
 
 
 def main() -> None:
@@ -38,4 +40,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    from app.config import utf8_stdio
+
+    utf8_stdio()
     main()

@@ -1,35 +1,133 @@
-# Auditable Financial Investigation Platform
+# Auditable financial investigation with RAG
 
 [![tests](https://github.com/AashutoshR/rag-financial/actions/workflows/tests.yml/badge.svg)](https://github.com/AashutoshR/rag-financial/actions/workflows/tests.yml)
 
-A retrieval-augmented system for investigating financial questions across SEC filings, where **every answer is an
-inspectable artifact**: claims, citations down to the table cell, calculations executed in code, conflicts, and
-reasons for abstaining. It's built to make RAG failures visible, not to hide them: wrong periods, future
-information leaking into historical answers, segment figures mistaken for company totals, and management
-explanations that don't add up.
+This is my capstone project: a retrieval-augmented system that answers questions about company financials from SEC
+filings, and shows its work. Every answer comes with the claims it makes, the exact table cells or passages behind
+each claim, the calculations (run in code, not by the model), and the reasons it refused to answer when the evidence
+wasn't there.
 
-![Audit Console: a gold answer with a cited income-statement cell open in the evidence inspector](docs/images/console.png)
+I care less about getting a nice-sounding answer than about being able to check it. Financial questions are full of
+traps a normal RAG pipeline walks straight into: the wrong fiscal year, a segment number passed off as the company
+total, a figure from a filing that wasn't published yet on the date you asked about, or a management explanation that
+doesn't actually add up. This project is built to catch those, and to make it obvious when it doesn't.
 
-## What's here today
+![The console: an answer on the left, and the income-statement cell it cites open on the right](docs/images/console.png)
 
-| Area | Status |
+Right now the corpus is Starbucks' FY2023 and FY2024 annual reports and its Q2 FY2025 quarterly report, plus two
+documents I added on purpose as traps (more on those below).
+
+## How it works
+
+### 1. Collecting the filings
+
+The filings are downloaded from SEC EDGAR once and stored exactly as they were, named by their SHA-256 hash. A manifest
+records, for each one, when it was published (the EDGAR acceptance time), when I ingested it, and its hash. That
+matters later: a question like "using only what was known on June 30, 2025" needs to know which documents existed on
+that date, and an answer should always be traceable to the exact version of the file it read.
+
+Two of the five documents are traps. One is the Q2 FY2025 earnings release, which reports a non-GAAP operating margin
+(8.2%) next to the GAAP one (6.9%). The other is the FY2025 annual report, published in November 2025, after the
+cutoff date several test questions use. It repeats FY2024 numbers, so it's an easy way to leak future information into
+a historical answer.
+
+### 2. Turning filings into evidence
+
+SEC filings today are HTML with inline XBRL tags. The extractor walks each filing and produces evidence units:
+passages of text, whole tables, and individual table cells. A cell keeps its row and column headers, the scale
+("in millions"), whether it was shown as negative, and the XBRL tag behind it (concept, period, segment). Each unit
+also remembers where it sits in the original HTML, so the console can jump straight to it later.
+
+To make sure the parsing is right, I cross-checked every tagged cell against the SEC's own XBRL data. Of 2,296 cells,
+2,140 match exactly, none disagree, and the other 156 use Starbucks-specific tags the SEC's API doesn't publish.
+
+### 3. Retrieving evidence and answering
+
+The current system is deliberately simple, because it's the baseline everything else has to beat. It retrieves the
+top 8 evidence units with BM25 (keyword search), with no date filter and no access control, and hands them to one of
+three answer generators:
+
+- an extractive one that just returns the best-matching line, with no model at all
+- a local model through [Ollama](https://ollama.com) (`gemma4:e4b` by default)
+- the Claude API, if you set `ANTHROPIC_API_KEY`
+
+### 4. The answer artifact
+
+Every run produces a JSON artifact, and the console renders it. Claims are labeled by type (a reported fact, a
+calculation, something management said, or the system's own inference) and by how well the evidence supports them.
+
+![Claims from a hand-written gold answer, each labeled with its type and support](docs/images/claims.png)
+
+Calculations are done in Python with exact decimals, and every input points back to the cell it came from. This one
+breaks Starbucks' FY2024 operating-margin decline into the contribution of each cost line. The numbers sum exactly to
+the −1.37 point change, and a test checks that they do.
+
+![Margin decline broken down by cost line](docs/images/decomposition.png)
+
+That breakdown is how the system tests management's explanation. In the 10-K, management says the 130 basis point
+decline was mainly due to wage investments, deleverage and promotions, partly offset by pricing and efficiencies. Their
+own numbers for those drivers add up to only −60 basis points.
+
+![Management's stated drivers net to −60 bps, not −130](docs/images/drivers.png)
+
+So the answer marks the explanation as only partially supported. It doesn't claim to know the cause; it just shows
+what the filing can and can't back up.
+
+### 5. Checking the answers
+
+There are 27 benchmark questions so far, each with the values a good answer has to contain, the evidence it should
+use, and specific things to check: did it correct a false premise, say whether a margin is GAAP or non-GAAP, give a
+range when the input was "approximately 72%", or abstain when the data simply isn't disclosed. Each part is scored
+separately. The scorer itself is tested against 47 hand-written answers, correct and wrong, because a scorer that
+quietly accepts wrong answers is worse than none.
+
+Here's the baseline on one of the as-of questions. It got the evidence wrong and never did the calculation, and three
+of the eight passages it looked at were published after the cutoff date:
+
+![A benchmark answer with its score and retrieval trace](docs/images/answer-scored.png)
+
+### 6. Inspecting the source
+
+Click any citation and the inspector shows the cell inside its table, with its XBRL tag and page number. From there you
+can open the original filing, scrolled to that cell and highlighted:
+
+![The original 10-K income statement with the cited cell highlighted](docs/images/source-filing.jpg)
+
+Filings are treated as untrusted content, so the console shows them with scripts and external loading blocked, and
+never inserts document text into the page as HTML.
+
+### 7. The benchmark page
+
+All of it adds up to a scoreboard, where every metric is measured on its own and you can click into any question:
+
+![Benchmark results for the baseline](docs/images/benchmark.png)
+
+## How the baseline does
+
+| | Result |
 |---|---|
-| Corpus | Starbucks: FY2023 and FY2024 10-K, Q2 FY2025 10-Q, plus two deliberate traps (an earnings release with non-GAAP margins, and the FY2025 10-K published after the 2025-06-30 test cutoff). Stored immutably and verified by SHA-256. |
-| Evidence extraction | Inline-XBRL HTML parser: passages, tables, and cells with row/column headers, scale, sign, XBRL concept, period and dimensions, plus a positional anchor back into the original filing. Of 2,296 tagged cells, 2,140 match the SEC's XBRL API exactly, **0 mismatch**, and 156 use company-specific concepts the API doesn't publish. |
-| Baseline (B0) | BM25 top-8 with three generators: deterministic extractive, a local model via [Ollama](https://ollama.com), or the Claude API. |
-| Benchmark | 27 dev questions (20 core + 7 frontier) with expected values, evidence, directions, abstentions and item-specific checks; 3 hand-written gold answers whose numbers are computed from cited cells. |
-| Scorer | Scored separately for retrieval, numbers, direction of change, approximation, checks, abstention, citation support and temporal leakage. Tested with 47 hand-written correct and wrong answers. |
-| Web console | Ask questions, inspect any citation down to the cell and the stored filing, and browse benchmark results and gold answers. |
-| Tests | 68 tests, run on Linux and Windows with Python 3.12 and 3.14 in CI. |
+| Required evidence in the top 8 results | 8 of 40 |
+| Required evidence in the top 20 | 14 of 40 |
+| Numbers stated correctly | 5 of 28 |
+| Direction of change stated correctly | 0 of 9 |
+| Question-specific checks passed | 1 of 18 |
+| Correct refusals on unanswerable questions | 0 of 3 |
 
-Planned work is in [IMPLEMENTATION_CHECKLIST.md](IMPLEMENTATION_CHECKLIST.md). The full specification, including the
-Frontier tier, is in [PROJECT_REQUIREMENTS.md](PROJECT_REQUIREMENTS.md).
+That's bad, and it's supposed to be. The interesting part is why. Questions about operating margin can't find the
+income statement, because the word "margin" never appears next to operating income and revenue; the right table ranks
+somewhere between 155th and 344th. Tables label columns "Sep 29, 2024" while questions say "fiscal 2024", and keyword
+search can't tell FY2024 from FY2025 anyway. With no date filter, one answer even quoted the right number from a
+report that hadn't been published yet on the question's date. The full analysis is in
+[docs/first_session_log.md](docs/first_session_log.md), and the complete report in
+[bench/reports/b0_extractive.md](bench/reports/b0_extractive.md).
 
-## Quick start
+The real filings turned out to be good test material on their own. Besides the drivers that don't add up, the same
+share buyback is displayed identically in two annual reports but tagged with opposite signs in XBRL, which a naive
+system would report as a restatement. And Japan's revenue is only ever disclosed lumped in with Canada and the U.K.
 
-Requires Python 3.12+.
+## Running it
 
-**Windows (PowerShell)**
+You need Python 3.12 or newer. On Windows (PowerShell):
 
 ```powershell
 git clone https://github.com/AashutoshR/rag-financial.git
@@ -40,108 +138,56 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m uvicorn app.server:app --port 8000
 ```
 
-**macOS / Linux**
+On macOS or Linux it's the same, using `python3` to create the environment and `.venv/bin/python` instead of
+`.\.venv\Scripts\python.exe`.
+
+Then open http://localhost:8000. The bootstrap step checks the stored filings against their hashes, extracts the
+evidence, builds the gold answers and runs the baseline. It takes under half a minute and doesn't need the internet.
+
+A few other things you can run:
 
 ```bash
-git clone https://github.com/AashutoshR/rag-financial.git
-cd rag-financial
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m app.bootstrap
-.venv/bin/python -m uvicorn app.server:app --port 8000
+python -m pytest -q                                  # the test suite
+python -m bench.run_b0 --generator ollama            # score the local model on all 27 questions
+python -m bench.inspect_tables                       # re-check extraction against the SEC's XBRL data
+python -m app.ingest                                 # re-download the filings (set SEC_USER_AGENT to "name email" first)
 ```
 
-Then open http://localhost:8000. `app.bootstrap` verifies the stored filings against the manifest, extracts the
-evidence, builds the gold answers and runs the baseline. It takes well under a minute and needs no network access.
+Links to answers can be shared: `http://localhost:8000/#/artifact/gold_q07` opens that answer, and adding an evidence
+id after it (for example `/sbux_10k_fy2024:v1:cell:547`) opens that cell in the inspector too.
 
-## Using the console
+## Notes on running a local model
 
-- **Investigate**: ask your own question, or pick a benchmark question so the run is scored automatically. You can set
-  an as-of date and choose a generator.
-- **Inspect evidence**: click any citation, calculation input or retrieved unit. The inspector shows the exact cell or
-  passage with its table, XBRL tag and page, and can open the stored filing scrolled to that spot. Filings are treated
-  as untrusted content, so they're served with scripts and external loading blocked.
-- **Shareable links**: `#/artifact/<artifact id>` opens an answer, and `#/artifact/<artifact id>/<unit id>` also opens a
-  piece of its evidence, for example `http://localhost:8000/#/artifact/gold_q07/sbux_10k_fy2024:v1:cell:547`.
-- **Benchmark, Gold answers, Corpus**: metrics and per-question failures, the hand-written reference answers, and the
-  source documents.
+I run Ollama on a laptop, and a few things there were worth handling properly. By default the model runs on the CPU
+(`OLLAMA_NUM_GPU=0`): when other apps had filled the 8 GB GPU, offloading to it stalled a run for almost 13 minutes,
+while the same question takes about 40 seconds on the CPU once the model is loaded. The console shows live progress
+and has a Cancel button, and it stops a run on its own if the model goes quiet for too long (`OLLAMA_FIRST_TOKEN_S`,
+default 420 seconds, and `OLLAMA_TOKEN_GAP_S`, default 60). I also found that Ollama 0.40.6 can stop answering
+altogether after a client disconnects mid-answer, so after any cancel or stall the console unloads the model, and the
+next run starts clean.
 
-### Generators
+## What's next
 
-| Generator | Needs | Notes |
-|---|---|---|
-| Extractive | nothing | Deterministic lower bound: returns the best-matching table row or sentence |
-| Ollama | Ollama running locally, with the model pulled (`ollama pull gemma4:e4b`) | Default model `gemma4:e4b`; set `OLLAMA_MODEL` / `OLLAMA_URL` to change |
-| Claude API | `ANTHROPIC_API_KEY` | Default model `claude-opus-5-5`; set `B0_MODEL` to change |
+This is the first of several phases. Next up is better retrieval (labeling tables with fiscal periods, indexing table
+rows, metadata filters, dense and hybrid search), then calculations planned by the system itself, proper as-of
+filtering with restatements, multi-step investigation, and finally permissions, so users only see documents they're
+allowed to. Each step has to beat the baseline on the benchmark to stay in. The plan is in
+[IMPLEMENTATION_CHECKLIST.md](IMPLEMENTATION_CHECKLIST.md), and the full specification, including a harder "frontier"
+tier, is in [PROJECT_REQUIREMENTS.md](PROJECT_REQUIREMENTS.md).
 
-Investigations run one at a time. For the local model:
-
-- **CPU only by default** (`OLLAMA_NUM_GPU=0`). On a laptop whose 8 GB GPU was mostly used by other apps, GPU offload
-  stalled a run for 777 s; CPU-only runs take about 40 s with the model loaded, and 2–3 minutes when it has to load.
-- **Live progress and Cancel**: the console shows whether the model is reading the evidence or writing the answer, and
-  Cancel stops a run in under a second.
-- **Stall watchdog**: a run is stopped, with an explanation, if no token arrives within `OLLAMA_FIRST_TOKEN_S` (default
-  420 s) or if tokens stop for `OLLAMA_TOKEN_GAP_S` (default 60 s).
-- **Automatic reset**: after a cancel or stall the model is unloaded. Ollama 0.40.6 can stop serving requests after a
-  client disconnects mid-answer, and unloading clears that. The next run then reloads the model.
-
-## Baseline results
-
-The extractive baseline on the 27 dev questions ([full report](bench/reports/b0_extractive.md)):
-
-| Metric | Result |
-|---|---|
-| Required evidence retrieved in the top 8 | 8/40 (20%) |
-| Required evidence retrieved in the top 20 | 14/40 (35%) |
-| Numbers stated correctly | 5/28 (18%) |
-| Direction of change stated correctly | 0/9 |
-| Item-specific checks passed | 1/18 |
-| Correct abstentions | 0/3 |
-| As-of questions shown post-cutoff documents | 3/4 |
-
-The baseline is supposed to fail; each later mechanism has to beat it measurably. The failure analysis is in
-[docs/first_session_log.md](docs/first_session_log.md). The largest causes:
-
-- **Calculation inputs aren't retrievable by the question's words.** "Operating margin" never appears next to
-  operating income and revenue, so the income statement ranks 155th–344th for margin questions.
-- **Period blindness.** Tables say "Sep 29, 2024", questions say "fiscal 2024", and BM25 can't tell FY2024 from FY2025.
-- **No time filter.** Post-cutoff filings reach the generator; one answer cited a 10-K published after the cutoff even
-  though an eligible filing said the same thing.
-
-The real filings also contain cases that make good benchmark items: management's quantified margin drivers net to
-−60 bps while explaining a −130 bps decline; the same buyback is displayed identically in two 10-Ks but tagged with
-opposite XBRL signs; and Japan's revenue is only disclosed bundled with Canada and the U.K.
-
-## Command reference
-
-| Step | Command |
-|---|---|
-| Rebuild everything derived | `python -m app.bootstrap` |
-| Re-download filings (needs network; set `SEC_USER_AGENT` to `"your-name you@example.com"`) | `python -m app.ingest` |
-| Extract evidence units | `python -m app.extract` |
-| Inspect tables and cross-check against the SEC XBRL API | `python -m bench.inspect_tables` |
-| Check every benchmark evidence spec resolves | `python -m bench.evidence` |
-| Build gold answers | `python -m bench.make_gold` |
-| Run the baseline | `python -m bench.run_b0 --generator extractive` (or `ollama`, `llm`) |
-| Run the web console | `python -m uvicorn app.server:app --port 8000` |
-| Run the tests | `python -m pytest -q` |
-
-## Repository layout
+## Layout
 
 ```
-app/          ingestion, extraction, retrieval, calculations, artifacts, baseline generators, web API
-web/          console front end (plain HTML/CSS/JS, no build step)
-bench/        benchmark questions, gold answers, scorer and fixtures, reports
-corpus/       sources.json (what to ingest) and manifest.jsonl (what was ingested, with hashes)
-data/blobs/   the stored source filings (committed; verified by SHA-256)
-data/raw/     SEC XBRL company-facts snapshot used for cross-checks
-docs/         session log and failure analysis, table inspection report, images
-tests/        unit, scorer, server and local-model control tests
+app/        ingestion, extraction, retrieval, calculations, answer artifacts, generators, web API
+web/        the console (plain HTML, CSS and JavaScript)
+bench/      questions, gold answers, scorer, reports
+corpus/     what to download, and the manifest of what was stored
+data/       the stored filings and an SEC XBRL snapshot (generated data isn't committed)
+docs/       the session log with the failure analysis, and the images used here
+tests/      70 tests, run on Linux and Windows on every push
 ```
-
-`data/extracted/` and `data/runs/` are generated and not committed.
 
 ## License
 
-Code is released under the [MIT License](LICENSE). The SEC filings under `data/blobs/` are public records from
-[EDGAR](https://www.sec.gov/edgar) and are not covered by the license.
+The code is MIT licensed (see [LICENSE](LICENSE)). The SEC filings in `data/blobs/` are public records from
+[EDGAR](https://www.sec.gov/edgar) and aren't covered by that license.

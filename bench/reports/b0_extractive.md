@@ -1,6 +1,6 @@
 # B0 baseline report — generator `extractive`
 
-Run `b0_extractive_20261026T023230Z` · 27 dev questions (Starbucks, 5 documents) · BM25 top-8 · no filters
+Run `b0_extractive_20261026T024510Z` · 27 dev questions (Starbucks, 5 documents) · BM25 top-8 · no filters
 
 ## Metrics (each reported separately)
 
@@ -20,7 +20,7 @@ Run `b0_extractive_20261026T023230Z` · 27 dev questions (Starbucks, 5 documents
 | Citation resolution (artifact structure valid) | 27/27 (100%) |
 | As-of questions exposed to post-cutoff documents | 3/4 (75%) |
 | As-of questions citing post-cutoff evidence or stating future values | 1/4 (25%) |
-| Latency p50 / max | 3 ms / 193 ms |
+| Latency p50 / max | 3 ms / 189 ms |
 | Cost total | $0.0000 |
 
 ## Failure categories

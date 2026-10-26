@@ -1,5 +1,5 @@
 {
-  "run_id": "b0_extractive_20261026T023230Z",
+  "run_id": "b0_extractive_20261026T024510Z",
   "rows": [
     {
       "id": "q01",
@@ -26,7 +26,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 193.3,
+      "latency_ms": 189.0,
       "cost_usd": 0,
       "answer": "Operating income | Sep 29, 2024: 5,408.8; Oct 1, 2023: 5,870.8; Sep 29, 2024 As a % of Total Net Revenues: 15.0; Oct 1, 2023 As a % of Total Net Revenues: 16.3",
       "failures": [
@@ -61,7 +61,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.3,
+      "latency_ms": 3.2,
       "cost_usd": 0,
       "answer": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d) can be found in the Annual Report on Form 10-K for the fiscal year ended October 1, 2023.",
       "failures": [
@@ -96,7 +96,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 2.4,
+      "latency_ms": 2.0,
       "cost_usd": 0,
       "answer": "Operating margin, as reported (GAAP) | Quarter Ended (1) Mar 30, 2025: 6.9; Quarter Ended (1) Mar 31, 2024: 12.8",
       "failures": [
@@ -131,7 +131,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.4,
+      "latency_ms": 3.2,
       "cost_usd": 0,
       "answer": "Fiscal 2024 operating margin was 15.0% compared to 16.3% in fiscal 2023.",
       "failures": [
@@ -165,7 +165,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.8,
+      "latency_ms": 3.6,
       "cost_usd": 0,
       "answer": "For the two quarters ended March 30, 2025 compared with the two quarters ended March 31, 2024 Product and distribution costs as a percentage of total net revenues decreased 30 basis points for the first two quarters of f",
       "failures": [
@@ -203,7 +203,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 5.0,
+      "latency_ms": 4.7,
       "cost_usd": 0,
       "answer": "For the International segment, revenue declined 2% in fiscal 2024 compared to fiscal 2023, primarily driven by the impact of unfavorable foreign currency translation, a 4% decline in comparable store sales driven by a de",
       "failures": [
@@ -239,7 +239,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 4.2,
+      "latency_ms": 3.9,
       "cost_usd": 0,
       "answer": "Operating Margin North America operating income for fiscal 2025 decr eased 41% to $3.2 billion, compared to $5.4 billion in fiscal 2024.",
       "failures": [
@@ -275,7 +275,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.4,
+      "latency_ms": 3.5,
       "cost_usd": 0,
       "answer": "Fiscal 2024 operating margin was 15.0% compared to 16.3% in fiscal 2023.",
       "failures": [
@@ -310,7 +310,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 4.6,
+      "latency_ms": 4.4,
       "cost_usd": 0,
       "answer": "Operating income | Quarter Ended Mar 30, 2025: 601.0; Quarter Ended Mar 31, 2024: 1,098.9; Quarter Ended % Change: (45.3); Quarter Ended Mar 30, 2025 As a % of total net revenues: 6.9; Quarter Ended Mar 31, 2024 As a % o",
       "failures": [
@@ -381,7 +381,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.0,
+      "latency_ms": 2.8,
       "cost_usd": 0,
       "answer": "Operating Margin Channel Development operating income for the first two quarters of fiscal 2025 decreased 6% to $402 million, compared to $426 million in the first two quarters of fiscal 2024.",
       "failures": [
@@ -448,7 +448,7 @@
       "citations": 1,
       "citation_hits_required": null,
       "structural_errors": [],
-      "latency_ms": 4.9,
+      "latency_ms": 4.5,
       "cost_usd": 0,
       "answer": "Company-operated stores | Mar 30, 2025: 1,423.3; Mar 31, 2024: 1,328.1; % Change: 7.2; Mar 30, 2025 As a % of International total net revenues: 76.2; Mar 31, 2024 As a % of International total net revenues: 75.6",
       "failures": [
@@ -484,7 +484,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.1,
+      "latency_ms": 2.8,
       "cost_usd": 0,
       "answer": "Operating margin, as reported (GAAP) | Quarter Ended (1) Mar 30, 2025: 6.9; Quarter Ended (1) Mar 31, 2024: 12.8",
       "failures": [
@@ -518,7 +518,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 4.3,
+      "latency_ms": 3.9,
       "cost_usd": 0,
       "answer": "For the two quarters ended March 30, 2025 compared with the two quarters ended March 31, 2024 Revenues Channel Development total net revenues for the first two quarters of fiscal 2025 decreased $21 million, or 2%, primar",
       "failures": [
@@ -553,7 +553,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 2.7,
+      "latency_ms": 2.8,
       "cost_usd": 0,
       "answer": "Operating Margin North America operating income for the second quarter of fiscal 2025 decreased 35% to $748 million, compared to $1.1 billion in the second quarter of fiscal 2024.",
       "failures": [
@@ -588,7 +588,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 2.4,
+      "latency_ms": 2.5,
       "cost_usd": 0,
       "answer": "and China consist primarily of revenues from Japan, Canada, and the U.K., which together account for approximately 73 %, 72 %, and 71 % of net revenues from other countries for fiscal years 2025, 2024, and 2023, respecti",
       "failures": [
@@ -624,7 +624,7 @@
       "citations": 1,
       "citation_hits_required": true,
       "structural_errors": [],
-      "latency_ms": 4.1,
+      "latency_ms": 3.2,
       "cost_usd": 0,
       "answer": "Operating Margin North America operating income for fiscal 2024 decreased 3% to $5.4 billion, compared to $5.5 billion in fiscal 2023.",
       "failures": [
@@ -656,7 +656,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.8,
+      "latency_ms": 3.7,
       "cost_usd": 0,
       "answer": "In this Annual Report on Form 10-K (\u201c10-K\u201d or \u201cReport\u201d) for the fiscal year ended September 28, 2025 (\u201cfiscal 2025\u201d), Starbucks Corporation (together with its subsidiaries) is referred to as \u201cStarbucks,\u201d the \u201cCompany,\u201d \u201c",
       "failures": [
@@ -692,7 +692,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.9,
+      "latency_ms": 3.2,
       "cost_usd": 0,
       "answer": "As of September 29, 2024, and October 1, 2023, there were $ 12.2 million and $ 19.1 million of accounts receivable from equity investees, respectively, on our consolidated balance sheets, primarily related to product sal",
       "failures": [
@@ -727,7 +727,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 2.4,
+      "latency_ms": 2.6,
       "cost_usd": 0,
       "answer": "Revenues International total net revenues for fiscal 2024 decreased $149 million, or 2%, primarily due to unfavorable foreign currency translation impacts ($252 million), as well as a 4% decline in comparable store sales",
       "failures": [
@@ -763,7 +763,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 4.0,
+      "latency_ms": 3.7,
       "cost_usd": 0,
       "answer": "The combination of these changes resulted in an overall decrease in operating margin of 130 basis points in fiscal 2024 when compared to fiscal 2023.",
       "failures": [
@@ -799,7 +799,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.3,
+      "latency_ms": 3.0,
       "cost_usd": 0,
       "answer": "During the fiscal year ended September 29, 2024, we repurchased 12.8 million shares of common stock for $1.3 billion on the open market.",
       "failures": [
@@ -836,7 +836,7 @@
       "citations": 1,
       "citation_hits_required": false,
       "structural_errors": [],
-      "latency_ms": 3.3,
+      "latency_ms": 3.1,
       "cost_usd": 0,
       "answer": "and China consist primarily of revenues from Japan, Canada, and the U.K., which together account for approximately 73 %, 72 %, and 71 % of net revenues from other countries for fiscal years 2025, 2024, and 2023, respecti",
       "failures": [

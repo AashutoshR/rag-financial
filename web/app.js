@@ -536,7 +536,14 @@ const RENDER = { benchmark: renderBenchmark, gold: renderGold, corpus: renderCor
 async function openArtifactLink(artifactId, unitId) {
   try {
     const art = await api(`/api/artifacts/${encodeURIComponent(artifactId)}`);
-    renderArtifact(art, { source: "Opened from link", navigate: false });
+    // Benchmark run artifacts (b0_<generator>_<item>) open with their score from the latest report.
+    let score = null;
+    const m = /^b0_(\w+?)_([qh]\d+)$/.exec(artifactId);
+    if (m) {
+      const report = (await api("/api/reports")).find((r) => r.generator === m[1]);
+      score = report?.rows.find((r) => r.id === m[2]) || null;
+    }
+    renderArtifact(art, { source: score ? "Benchmark run (opened from link)" : "Opened from link", score, navigate: false });
     if (unitId) await inspect(unitId);
   } catch (err) {
     toast(`Could not open ${artifactId}: ${err.message}`);
