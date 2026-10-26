@@ -1,0 +1,7 @@
+# Later lines win, so the catch-all comes first.
+# Text files: normalize to LF in the repository.
+* text=auto eol=lf
+
+# Source filings are verified by SHA-256 against corpus/manifest.jsonl: store and check out byte-for-byte.
+data/blobs/** binary
+data/raw/** binary

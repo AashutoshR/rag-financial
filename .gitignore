@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Derived data — rebuilt by `python -m app.bootstrap`.
+# data/blobs (the immutable source filings), data/raw (SEC XBRL snapshot) and corpus/manifest.jsonl are committed.
+data/extracted/
+data/runs/
+
+# Local tooling and secrets
+.env
+.env.*
+.claude/
+.vscode/
+.idea/
+*.log

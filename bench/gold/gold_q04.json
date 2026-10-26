@@ -1,0 +1,341 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "gold_q04",
+  "question": "By how many percentage points did Starbucks' operating margin change from fiscal 2023 to fiscal 2024?",
+  "principal": "analyst_public",
+  "as_of": null,
+  "snapshot": {
+    "csn": 5,
+    "versions": [
+      {
+        "document_id": "sbux_10k_fy2023",
+        "version": 1,
+        "sha256": "63fe8367071c749f617b6e85f7e3a491ad2877d271f3ec4c10517884a459bc81"
+      },
+      {
+        "document_id": "sbux_10k_fy2024",
+        "version": 1,
+        "sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331"
+      },
+      {
+        "document_id": "sbux_10q_q2fy2025",
+        "version": 1,
+        "sha256": "b037391026679149275aa4ae07986d967aaf2a941a19fb2da630ef225bd1513c"
+      },
+      {
+        "document_id": "sbux_er_q2fy2025",
+        "version": 1,
+        "sha256": "76aaa6a0114f0a9247cc4f0d4e1b809dac8f789dff5d02ae4ce10a7fce2fa34e"
+      },
+      {
+        "document_id": "sbux_10k_fy2025",
+        "version": 1,
+        "sha256": "ff4485d62485f3282a927ec52ce59f796aae916a3591028b5b12e9308f2d1ecc"
+      }
+    ]
+  },
+  "outcome": "answer",
+  "answer_summary": "Starbucks' GAAP operating margin fell from 16.32% to 14.95%, a change of -1.37 pp (-137 bps). Management describes this as a 130 bps contraction, using rounded margins.",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "calculated",
+      "text": "Operating margin was 16.32% in fiscal 2023 and 14.95% in fiscal 2024.",
+      "support": "supported",
+      "citation_ids": [
+        "e4",
+        "e2",
+        "e3",
+        "e1"
+      ],
+      "calculation_ids": [
+        "k1",
+        "k2"
+      ]
+    },
+    {
+      "id": "c2",
+      "type": "calculated",
+      "text": "Operating margin changed by -1.37 pp (-137 bps) from fiscal 2023 to fiscal 2024.",
+      "support": "supported",
+      "citation_ids": [],
+      "calculation_ids": [
+        "k3"
+      ]
+    },
+    {
+      "id": "c3",
+      "type": "management_assertion",
+      "text": "Management reports operating margins of 16.3% and 15.0%, a contraction of 130 basis points.",
+      "support": "supported",
+      "citation_ids": [
+        "e5"
+      ],
+      "calculation_ids": [],
+      "verification_note": "Management's 130 bps is the difference of margins rounded to one decimal; the unrounded change is 137 bps. This is a rounding difference, not a conflict in the underlying figures."
+    }
+  ],
+  "citations": [
+    {
+      "id": "e1",
+      "unit_id": "sbux_10k_fy2024:v1:cell:541",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-44"
+      },
+      "quote": "36,176.2",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "36176200000"
+    },
+    {
+      "id": "e2",
+      "unit_id": "sbux_10k_fy2024:v1:cell:542",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-45"
+      },
+      "quote": "35,975.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "35975600000"
+    },
+    {
+      "id": "e3",
+      "unit_id": "sbux_10k_fy2024:v1:cell:571",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Operating income",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-74"
+      },
+      "quote": "5,408.8",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OperatingIncomeLoss",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "5408800000"
+    },
+    {
+      "id": "e4",
+      "unit_id": "sbux_10k_fy2024:v1:cell:572",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Operating income",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-75"
+      },
+      "quote": "5,870.8",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OperatingIncomeLoss",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "5870800000"
+    },
+    {
+      "id": "e5",
+      "unit_id": "sbux_10k_fy2024:v1:paragraph:335",
+      "kind": "paragraph",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations",
+        "heading": "Financial Highlights",
+        "html_page": 39,
+        "printed_page": "36",
+        "dom_anchor": "u-b-819"
+      },
+      "quote": "• Consolidated operating income decreased to $5.4 billion in fiscal 2024 compared to $5.9 billion in fiscal 2023. Fiscal 2024 operating margin was 15.0% compared to 16.3% in fiscal 2023. Operating margin contraction of 130 basis points was primarily due to investments in store partner wages and benefits (approximately 140 basis points), deleverage (approximately 130 basis points), and increased promotional activity (approximately 100 basis points). These decreases were partially offset by pricing (approximately 180 basis points) and in-store operational efficiencies (approximately 130 basis po"
+    }
+  ],
+  "calculations": [
+    {
+      "id": "k1",
+      "formula": "operating_margin_fy2024 = operating_income_fy2024 / revenue_fy2024",
+      "inputs": [
+        {
+          "name": "operating_income_fy2024",
+          "value": "5408800000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e3",
+          "unit_id": "sbux_10k_fy2024:v1:cell:571"
+        },
+        {
+          "name": "revenue_fy2024",
+          "value": "36176200000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e1",
+          "unit_id": "sbux_10k_fy2024:v1:cell:541"
+        }
+      ],
+      "result": {
+        "value": "0.1495126630215445513901404791",
+        "unit": "ratio",
+        "display": "14.95%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k2",
+      "formula": "operating_margin_fy2023 = operating_income_fy2023 / revenue_fy2023",
+      "inputs": [
+        {
+          "name": "operating_income_fy2023",
+          "value": "5870800000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e4",
+          "unit_id": "sbux_10k_fy2024:v1:cell:572"
+        },
+        {
+          "name": "revenue_fy2023",
+          "value": "35975600000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e2",
+          "unit_id": "sbux_10k_fy2024:v1:cell:542"
+        }
+      ],
+      "result": {
+        "value": "0.1631883832375276576346190196",
+        "unit": "ratio",
+        "display": "16.32%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k3",
+      "formula": "operating_margin_change = k1 - k2",
+      "inputs": [],
+      "result": {
+        "value": "-0.0136757202159831062444785405",
+        "unit": "ratio_difference",
+        "display": "-1.37 pp (-137 bps)"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [
+        "inputs are calculations k1 and k2"
+      ],
+      "engine": "calc@0.1.0"
+    }
+  ],
+  "conflicts": [
+    {
+      "type": "rounding_difference",
+      "fact": "FY2024 operating margin change",
+      "values": {
+        "management (rounded margins)": "-130 bps",
+        "calculated (k3)": "-1.37 pp (-137 bps)"
+      },
+      "citations": [
+        "e5"
+      ],
+      "resolution": "Report the calculated value; note the stated figure."
+    }
+  ],
+  "definition_checks": [
+    {
+      "metric": "operating margin",
+      "finding": "GAAP operating income / total net revenues, same basis and 52-week periods in both years",
+      "citations": [
+        "e3"
+      ]
+    }
+  ],
+  "limitations": [],
+  "abstentions": [],
+  "security_flags": [],
+  "trace": {
+    "author": "hand-written gold",
+    "steps": null,
+    "tokens": 0,
+    "cost_usd": 0
+  },
+  "versions": {
+    "calc_engine": "calc@0.1.0",
+    "parser": "ixbrl-html@0.1.0"
+  },
+  "status": "valid",
+  "created_at": "2026-10-26T02:34:29+00:00"
+}

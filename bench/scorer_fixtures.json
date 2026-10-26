@@ -1,0 +1,492 @@
+{
+  "_comment": "Hand-written answers that test the scorer (bench/checks.py). 'expect' is the exact set of answer-level failures: [] means the answer must pass. Positive fixtures guard against a scorer that rejects good answers; negative ones against a scorer that accepts plausible wrong ones.",
+  "fixtures": [
+    {
+      "item": "q02",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2023"
+      ],
+      "text": "Operating income was $5,870.8 million in fiscal 2023, as reported in the fiscal 2023 Form 10-K.",
+      "expect": []
+    },
+    {
+      "item": "q02",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating income was $5,870.8 million in fiscal 2023.",
+      "expect": [
+        "check_failed:cites_fy2023_10k"
+      ]
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating margin fell 1.37 percentage points, from 16.32% to 14.95%.",
+      "expect": []
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "The change was −137 bps.",
+      "expect": []
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating margin saw a contraction of 137 basis points.",
+      "expect": []
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating margin rose 1.37 pp.",
+      "expect": [
+        "wrong_direction:Operating margin change FY23→FY24"
+      ]
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating margin changed by 1.37 pp.",
+      "expect": [
+        "direction_unstated:Operating margin change FY23→FY24"
+      ]
+    },
+    {
+      "item": "q04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Operating margin fell 1.3 percentage points.",
+      "expect": [
+        "missing_or_wrong_calculation:Operating margin change FY23→FY24"
+      ]
+    },
+    {
+      "item": "q05",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Total net revenues grew 0.56% year over year.",
+      "expect": []
+    },
+    {
+      "item": "q05",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Total net revenues declined 0.56%.",
+      "expect": [
+        "wrong_direction:Revenue growth FY23→FY24"
+      ]
+    },
+    {
+      "item": "q12",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Fiscal 2024 ended on September 29, 2024 and included 52 weeks.",
+      "expect": []
+    },
+    {
+      "item": "q12",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Fiscal 2024 included 52 weeks.",
+      "expect": [
+        "check_failed:states_end_date"
+      ]
+    },
+    {
+      "item": "q13",
+      "outcome": "abstention",
+      "cited_docs": [],
+      "text": "Fiscal 2025 results had not been published as of June 30, 2025; the fiscal year had not yet ended.",
+      "expect": []
+    },
+    {
+      "item": "q13",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2025"
+      ],
+      "text": "Fiscal 2025 total net revenues were $37,184.4 million.",
+      "expect": [
+        "answered_instead_of_abstaining",
+        "forbidden_value_stated:37184.4",
+        "check_failed:abstention_reason_temporal"
+      ]
+    },
+    {
+      "item": "q16",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10q_q2fy2025"
+      ],
+      "text": "GAAP operating margin was 6.9% in Q2 FY2025 (non-GAAP: 8.2%).",
+      "expect": []
+    },
+    {
+      "item": "q16",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_er_q2fy2025"
+      ],
+      "text": "Operating margin was 8.2%.",
+      "expect": [
+        "wrong_or_missing_value:GAAP operating margin",
+        "check_failed:states_gaap_basis"
+      ]
+    },
+    {
+      "item": "q17",
+      "outcome": "abstention",
+      "cited_docs": [],
+      "text": "Japan revenue is not disclosed separately; it is part of the International segment.",
+      "expect": []
+    },
+    {
+      "item": "q17",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Japan, Canada and the U.K. are approximately 72% of other-countries revenue.",
+      "expect": [
+        "answered_instead_of_abstaining",
+        "check_failed:abstention_reason_disclosure"
+      ]
+    },
+    {
+      "item": "h01",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Revenue did not decline in fiscal 2024: total net revenues increased 0.56%, from $35,975.6 million to $36,176.2 million.",
+      "expect": []
+    },
+    {
+      "item": "h01",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Revenue declined 0.56% in fiscal 2024 because of lower comparable store sales.",
+      "expect": [
+        "wrong_direction:Revenue growth FY23→FY24",
+        "check_failed:corrects_premise"
+      ]
+    },
+    {
+      "item": "h02",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "No. Management's quantified drivers net to only -60 bps (−140 −130 −100 +180 +130), which does not fully account for the stated 130 bps contraction.",
+      "expect": []
+    },
+    {
+      "item": "h02",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Yes, the drivers fully account for the 130 basis point contraction.",
+      "expect": [
+        "missing_or_wrong_calculation:Net of stated drivers",
+        "check_failed:states_inconsistency"
+      ]
+    },
+    {
+      "item": "h03",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024",
+        "sbux_10k_fy2025"
+      ],
+      "text": "No — it was not restated. Both filings display the repurchase as (1,259.1) million; only the XBRL sign differs, a tagging convention change.",
+      "expect": []
+    },
+    {
+      "item": "h03",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024",
+        "sbux_10k_fy2025"
+      ],
+      "text": "Yes. The FY2025 10-K restated FY2024 repurchases from -1,259.1 million to 1,259.1 million.",
+      "expect": [
+        "check_failed:no_restatement",
+        "check_failed:explains_sign"
+      ]
+    },
+    {
+      "item": "h04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Approximately $4.65 billion (about 72% of $6,460.6 million other-countries revenue).",
+      "expect": []
+    },
+    {
+      "item": "h04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Roughly $4,619–4,684 million, since 'approximately 72%' could be 71.5% to 72.5%.",
+      "expect": []
+    },
+    {
+      "item": "h04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Combined revenue was $4,651.6 million.",
+      "expect": [
+        "approximation_not_stated:Combined revenue (approx.)"
+      ]
+    },
+    {
+      "item": "h04",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Japan alone was $2.0 billion; together with Canada and the U.K. about $4.65 billion.",
+      "expect": [
+        "check_failed:no_japan_only_figure"
+      ]
+    },
+    {
+      "item": "h05",
+      "outcome": "abstention",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Q4 FY2024 operating income can't be determined: it requires the nine-month year-to-date figure from the Q3 FY2024 10-Q, which is not in the corpus.",
+      "expect": []
+    },
+    {
+      "item": "h05",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024",
+        "sbux_10q_q2fy2025"
+      ],
+      "text": "Q4 operating income was $2,824.5 million (full year minus the first half).",
+      "expect": [
+        "answered_instead_of_abstaining",
+        "forbidden_value_stated:2824.5",
+        "check_failed:names_missing_document"
+      ]
+    },
+    {
+      "item": "h05",
+      "outcome": "abstention",
+      "cited_docs": [],
+      "text": "That information is not available in the documents.",
+      "expect": [
+        "check_failed:names_missing_document"
+      ]
+    },
+    {
+      "item": "h06",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2023"
+      ],
+      "text": "Approximately 71%, per the fiscal 2023 Form 10-K.",
+      "expect": []
+    },
+    {
+      "item": "h06",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2025"
+      ],
+      "text": "Approximately 71%.",
+      "expect": [
+        "check_failed:cites_fy2023_10k",
+        "check_failed:not_cites_fy2025_10k"
+      ]
+    },
+    {
+      "item": "h07",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_er_q2fy2025"
+      ],
+      "text": "Non-GAAP operating margin was 8.2%, excluding $116.2 million of restructuring; it is not a GAAP measure (GAAP: 6.9%).",
+      "expect": []
+    },
+    {
+      "item": "h07",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_er_q2fy2025"
+      ],
+      "text": "Operating margin excluding restructuring was 8.2%.",
+      "expect": [
+        "check_failed:states_non_gaap"
+      ]
+    },
+    {
+      "item": "q07",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Management attributes the decline to wage investments, deleverage and promotions. Store operating expenses lowered margin by 1.34 pp.",
+      "expect": [
+        "check_failed:explanation_partially_supported"
+      ]
+    },
+    {
+      "item": "q15",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024",
+        "sbux_10k_fy2025"
+      ],
+      "text": "Yes — both filings report $36,176.2 million; the figure is unchanged.",
+      "expect": []
+    },
+    {
+      "item": "q15",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2025"
+      ],
+      "text": "The fiscal 2025 10-K reports $36,176.2 million for fiscal 2024.",
+      "expect": [
+        "check_failed:states_same"
+      ]
+    },
+    {
+      "item": "q19",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10q_q2fy2025",
+        "sbux_er_q2fy2025"
+      ],
+      "text": "Yes, both report $601.0 million, so they match.",
+      "expect": []
+    },
+    {
+      "item": "q19",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10q_q2fy2025"
+      ],
+      "text": "The 10-Q reports operating income of $601.0 million.",
+      "expect": [
+        "check_failed:states_match"
+      ]
+    },
+    {
+      "item": "q20",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Yes, income from equity investees ($301.2 million) is included in operating income.",
+      "expect": []
+    },
+    {
+      "item": "q20",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Income from equity investees was $301.2 million.",
+      "expect": [
+        "check_failed:states_inclusion"
+      ]
+    },
+    {
+      "item": "h05",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2025"
+      ],
+      "_note": "real B0 output that used to pass the check",
+      "text": "During the fourth quarter of fiscal 2024, and for each of the first three quarters of fiscal 2025, we declared a cash dividend of $0.61 per share.",
+      "expect": [
+        "answered_instead_of_abstaining",
+        "check_failed:names_missing_document"
+      ]
+    },
+    {
+      "item": "h05",
+      "outcome": "abstention",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "text": "Not determinable: Q4 needs either the fourth-quarter earnings release or the Q3 FY2024 Form 10-Q, and neither is in the corpus.",
+      "expect": []
+    },
+    {
+      "item": "q19",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10k_fy2025"
+      ],
+      "_note": "real B0 output that used to pass the check",
+      "text": "In this Annual Report on Form 10-K (“10-K” or “Report”) for the fiscal year ended September 28, 2025 (“fiscal 2025”), Starbucks Corporation (together with its subsidiaries) is referred to as “Starbucks,” the “Company,” “we,” “us” or “our.” The same applies throughout.",
+      "expect": [
+        "wrong_or_missing_value:Q2 FY25 operating income",
+        "check_failed:states_match"
+      ]
+    },
+    {
+      "item": "q19",
+      "outcome": "answer",
+      "cited_docs": [
+        "sbux_10q_q2fy2025"
+      ],
+      "text": "The 10-Q reports operating income of $601.0 million. The earnings release uses the same fiscal calendar.",
+      "expect": [
+        "check_failed:states_match"
+      ]
+    },
+    {
+      "item": "q17",
+      "outcome": "abstention",
+      "cited_docs": [
+        "sbux_10k_fy2024"
+      ],
+      "_note": "real gemma4:e4b answer that the narrower pattern wrongly failed",
+      "text": "The provided evidence indicates that revenues from countries other than the U.S. and China in fiscal 2024 consisted primarily of revenues from Japan, Canada, and the U.K., which together accounted for approximately 72% of net revenues from other countries [U2]. However, the specific net revenues from Japan in fiscal 2024 are not provided.",
+      "expect": []
+    }
+  ]
+}

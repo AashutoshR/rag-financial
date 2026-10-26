@@ -1,0 +1,907 @@
+{
+  "_comment": "First-session dev questions (Starbucks). Evidence specs resolve to unit IDs at scoring time: {doc, concept, start, end, dims} matches iXBRL-tagged cells; {doc, text} matches paragraphs by regex. Money values are in USD millions, ratios in %, margin changes in pp.",
+  "items": [
+    {
+      "id": "q01",
+      "group": "g_rev_fy24",
+      "split": "dev",
+      "category": [
+        "fact_lookup"
+      ],
+      "question": "What were Starbucks' total net revenues for fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2024 total net revenues",
+            "value": 36176.2,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            },
+            {
+              "doc": "sbux_10k_fy2025",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q02",
+      "group": "g_oi_fy23",
+      "split": "dev",
+      "category": [
+        "fact_lookup",
+        "source_specific"
+      ],
+      "question": "What was Starbucks' operating income in fiscal 2023, as reported in its fiscal 2023 Form 10-K?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2023 operating income",
+            "value": 5870.8,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2023",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            }
+          ]
+        ],
+        "notes": "Must cite the FY2023 10-K, not the FY2024 10-K comparative column.",
+        "checks": [
+          {
+            "id": "cites_fy2023_10k",
+            "type": "cites_doc",
+            "doc": "sbux_10k_fy2023",
+            "why": "question asks for the figure as reported in the FY2023 10-K"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q03",
+      "group": "g_margin_fy24",
+      "split": "dev",
+      "category": [
+        "calculation"
+      ],
+      "question": "What was Starbucks' GAAP operating margin in fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2024 operating margin",
+            "value": 14.95,
+            "unit": "%",
+            "tol_abs": 0.06
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "notes": "5,408.8 / 36,176.2 = 14.95%. Management rounds to 15.0%; both accepted."
+      }
+    },
+    {
+      "id": "q04",
+      "group": "g_margin_change_fy24",
+      "split": "dev",
+      "category": [
+        "calculation",
+        "gold"
+      ],
+      "question": "By how many percentage points did Starbucks' operating margin change from fiscal 2023 to fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Operating margin change FY23→FY24",
+            "value": -1.37,
+            "unit": "pp",
+            "tol_abs": 0.02,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            },
+            {
+              "doc": "sbux_10k_fy2023",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            },
+            {
+              "doc": "sbux_10k_fy2023",
+              "concept": "us-gaap:Revenues",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "management states 130 bps from rounded margins (16.3% → 15.0%); exact change is 137 bps"
+        ]
+      }
+    },
+    {
+      "id": "q05",
+      "group": "g_rev_growth_fy24",
+      "split": "dev",
+      "category": [
+        "calculation"
+      ],
+      "question": "By what percentage did Starbucks' total net revenues grow from fiscal 2023 to fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Revenue growth FY23→FY24",
+            "value": 0.56,
+            "unit": "%",
+            "tol_abs": 0.01,
+            "direction": "increase"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            },
+            {
+              "doc": "sbux_10k_fy2023",
+              "concept": "us-gaap:Revenues",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q06",
+      "group": "g_representative",
+      "split": "dev",
+      "category": [
+        "screen",
+        "temporal",
+        "calculation"
+      ],
+      "question": "Using only information available on June 30, 2025, did Starbucks' revenue increase while its operating margin declined between fiscal 2023 and fiscal 2024? Calculate both changes.",
+      "as_of": "2025-06-30",
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Revenue growth",
+            "value": 0.56,
+            "unit": "%",
+            "tol_abs": 0.01,
+            "direction": "increase"
+          },
+          {
+            "name": "Operating margin change",
+            "value": -1.37,
+            "unit": "pp",
+            "tol_abs": 0.02,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "future_sources": [
+          "sbux_10k_fy2025"
+        ]
+      }
+    },
+    {
+      "id": "q07",
+      "group": "g_explanation_fy24",
+      "split": "dev",
+      "category": [
+        "explanation_vs_evidence",
+        "gold"
+      ],
+      "question": "What reasons did management give for Starbucks' fiscal 2024 operating margin decline, and do the reported cost lines support those reasons?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Store operating expenses contribution",
+            "value": -1.34,
+            "unit": "pp",
+            "tol_abs": 0.02,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "Operating margin contraction of 130 basis points was primarily due to"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "management's quantified drivers net to about -60 bps, not -130 bps",
+          "wages and benefits rose only ~13 bps as a share of total net revenues",
+          "FY2023 included a $91.3M gain from sale of assets (~25 bps) not mentioned among the drivers",
+          "causation cannot be established from the filing"
+        ],
+        "checks": [
+          {
+            "id": "explanation_partially_supported",
+            "type": "mentions",
+            "pattern": "partial|only partly|not fully|cannot (be )?(verified|establish)|can't (be )?(verified|establish)|unverifi|do(es)? not (fully )?(account|explain|sum|add up)|net to only",
+            "why": "must judge the explanation, not repeat it"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q08",
+      "group": "g_explanation_fy24",
+      "split": "dev",
+      "category": [
+        "calculation",
+        "decomposition"
+      ],
+      "question": "Which income-statement line contributed most to the change in Starbucks' operating margin from fiscal 2023 to fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Store operating expenses contribution",
+            "value": -1.34,
+            "unit": "pp",
+            "tol_abs": 0.02,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "notes": "Store operating expenses rose from 40.92% to 42.26% of total net revenues."
+      }
+    },
+    {
+      "id": "q09",
+      "group": "g_q2fy25",
+      "split": "dev",
+      "category": [
+        "fact_lookup",
+        "quarterly"
+      ],
+      "question": "What were Starbucks' total net revenues and operating income for the quarter ended March 30, 2025?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Q2 FY25 revenue",
+            "value": 8761.6,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          },
+          {
+            "name": "Q2 FY25 operating income",
+            "value": 601.0,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:Revenues",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q10",
+      "group": "g_q2fy25_margin",
+      "split": "dev",
+      "category": [
+        "calculation",
+        "quarterly"
+      ],
+      "question": "What was Starbucks' GAAP operating margin for the second quarter of fiscal 2025, and how did it change from the second quarter of fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Q2 FY25 operating margin",
+            "value": 6.86,
+            "unit": "%",
+            "tol_abs": 0.05
+          },
+          {
+            "name": "Change vs Q2 FY24",
+            "value": -5.97,
+            "unit": "pp",
+            "tol_abs": 0.08,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-01-01",
+              "end": "2024-03-31"
+            }
+          ]
+        ],
+        "notes": "Filing states 590 bps from rounded margins 12.8% → 6.9%."
+      }
+    },
+    {
+      "id": "q11",
+      "group": "g_ytd",
+      "split": "dev",
+      "category": [
+        "fact_lookup",
+        "duration_trap"
+      ],
+      "question": "What was Starbucks' operating income for the first half (two quarters) of fiscal 2025?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "H1 FY25 operating income",
+            "value": 1722.8,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-09-30",
+              "end": "2025-03-30"
+            }
+          ]
+        ],
+        "notes": "Trap: the Q2-only figure is 601.0."
+      }
+    },
+    {
+      "id": "q12",
+      "group": "g_calendar",
+      "split": "dev",
+      "category": [
+        "fiscal_calendar"
+      ],
+      "question": "When did Starbucks' fiscal 2024 end, and how many weeks did it include?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Weeks in FY2024",
+            "value": 52,
+            "unit": "count",
+            "tol_abs": 0
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "Fiscal years 2024, 2023, and 2022 included 52 weeks"
+            },
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "text": "Fiscal 2025 and 2024 include 52 weeks"
+            }
+          ]
+        ],
+        "notes": "Ended September 29, 2024 (Sunday closest to September 30).",
+        "checks": [
+          {
+            "id": "states_end_date",
+            "type": "mentions",
+            "pattern": "Sep(tember|t\\.?|\\.)? 29,? 2024|2024-09-29|9/29/2024",
+            "why": "fiscal 2024 ended September 29, 2024"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q13",
+      "group": "g_future",
+      "split": "dev",
+      "category": [
+        "temporal",
+        "should_abstain"
+      ],
+      "question": "Using only information available on June 30, 2025, what were Starbucks' total net revenues for fiscal 2025?",
+      "as_of": "2025-06-30",
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "abstention",
+        "abstention_reason": "Fiscal 2025 ended 2025-09-28; its results were first published 2025-11-14, after the cutoff.",
+        "forbidden_values": [
+          {
+            "value": 37184.4,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [],
+        "future_sources": [
+          "sbux_10k_fy2025"
+        ],
+        "checks": [
+          {
+            "id": "abstention_reason_temporal",
+            "type": "mentions",
+            "pattern": "not (yet )?(been )?(published|available|reported|filed)|n't (yet )?(been )?(published|available|reported|filed)|after (the )?(cutoff|June 30, 2025)|had not (yet )?ended|not ended",
+            "why": "abstention must give the temporal reason"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q14",
+      "group": "g_latest_quarter",
+      "split": "dev",
+      "category": [
+        "temporal",
+        "calculation"
+      ],
+      "question": "Using only information available on June 30, 2025, what was Starbucks' most recently reported quarterly GAAP operating margin?",
+      "as_of": "2025-06-30",
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Q2 FY25 operating margin",
+            "value": 6.86,
+            "unit": "%",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            },
+            {
+              "doc": "sbux_er_q2fy2025",
+              "text": "GAAP operating margin contracted 590 basis points"
+            }
+          ]
+        ],
+        "future_sources": [
+          "sbux_10k_fy2025"
+        ]
+      }
+    },
+    {
+      "id": "q15",
+      "group": "g_recast",
+      "split": "dev",
+      "category": [
+        "multi_document",
+        "restatement_check"
+      ],
+      "question": "Is the fiscal 2024 total net revenue figure in Starbucks' fiscal 2025 Form 10-K the same as the figure in its fiscal 2024 Form 10-K?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2024 revenue (both filings)",
+            "value": 36176.2,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2025",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "notes": "Yes — no restatement of this figure.",
+        "checks": [
+          {
+            "id": "states_same",
+            "type": "mentions_near_value",
+            "pattern": "\\b(same|identical|unchanged|match(es|ed)?|no restatement|not restated|consistent)\\b",
+            "why": "must answer the comparison",
+            "value": "FY2024 revenue (both filings)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q16",
+      "group": "g_q2fy25_margin",
+      "split": "dev",
+      "category": [
+        "definition_mismatch"
+      ],
+      "question": "What was Starbucks' operating margin in the second quarter of fiscal 2025?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "GAAP operating margin",
+            "value": 6.9,
+            "unit": "%",
+            "tol_abs": 0.06
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            },
+            {
+              "doc": "sbux_er_q2fy2025",
+              "text": "GAAP operating margin contracted 590 basis points"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "must state the basis: GAAP 6.9% vs non-GAAP 8.2% (excludes $116.2M restructuring)"
+        ],
+        "checks": [
+          {
+            "id": "states_gaap_basis",
+            "type": "mentions",
+            "pattern": "\\bGAAP\\b",
+            "why": "must state which basis the margin is on"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q17",
+      "group": "g_japan",
+      "split": "dev",
+      "category": [
+        "should_abstain"
+      ],
+      "question": "What were Starbucks' net revenues from Japan in fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "abstention",
+        "abstention_reason": "Japan is not disclosed separately; it is part of the International segment. Geographic disclosure covers the United States, China and other countries only.",
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "International, which is inclusive of China, Japan"
+            }
+          ]
+        ],
+        "checks": [
+          {
+            "id": "abstention_reason_disclosure",
+            "type": "mentions",
+            "pattern": "not (separately |specifically |individually )?(disclosed|reported|broken out|provided|given|itemized)|does(n't| not) (separately )?(disclose|report|break out|provide)",
+            "why": "abstention must say Japan isn't disclosed separately"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q18",
+      "group": "g_segment",
+      "split": "dev",
+      "category": [
+        "fact_lookup",
+        "segment",
+        "calculation"
+      ],
+      "question": "What were Starbucks' North America segment operating income and operating margin in fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "North America operating income",
+            "value": 5355.3,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          },
+          {
+            "name": "North America operating margin",
+            "value": 19.8,
+            "unit": "%",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2023-10-02",
+              "end": "2024-09-29",
+              "dims": {
+                "srt:ConsolidationItemsAxis": "us-gaap:OperatingSegmentsMember",
+                "us-gaap:StatementBusinessSegmentsAxis": "sbux:NorthAmericaSegmentMember"
+              }
+            },
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "North America operating income for fiscal 2024 decreased 3%"
+            }
+          ]
+        ],
+        "notes": "Trap: consolidated operating income is 5,408.8."
+      }
+    },
+    {
+      "id": "q19",
+      "group": "g_er_vs_10q",
+      "split": "dev",
+      "category": [
+        "multi_document"
+      ],
+      "question": "Does the second-quarter fiscal 2025 operating income in Starbucks' earnings release match the figure in its Form 10-Q?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Q2 FY25 operating income",
+            "value": 601.0,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10q_q2fy2025",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2024-12-30",
+              "end": "2025-03-30"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_er_q2fy2025",
+              "text": "Operating income, as reported \\(GAAP\\)",
+              "kinds": [
+                "table"
+              ]
+            }
+          ]
+        ],
+        "checks": [
+          {
+            "id": "states_match",
+            "type": "mentions_near_value",
+            "pattern": "\\b(match(es|ed)?|same|identical|consistent|agree(s|d)?)\\b",
+            "why": "must answer the comparison",
+            "value": "Q2 FY25 operating income"
+          }
+        ]
+      }
+    },
+    {
+      "id": "q20",
+      "group": "g_equity_investees",
+      "split": "dev",
+      "category": [
+        "definition",
+        "fact_lookup"
+      ],
+      "question": "Does Starbucks' operating income include income from equity investees, and how much was that income in fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2024 income from equity investees",
+            "value": 301.2,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:IncomeLossFromEquityMethodInvestments",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "notes": "Yes: it is added above the operating income line. Matters for cross-company margin comparisons.",
+        "checks": [
+          {
+            "id": "states_inclusion",
+            "type": "mentions_near_value",
+            "pattern": "\\b(includ(es|ed|ing)|is part of|within operating income)\\b",
+            "why": "must say equity-investee income is included",
+            "value": "FY2024 income from equity investees"
+          }
+        ]
+      }
+    }
+  ]
+}

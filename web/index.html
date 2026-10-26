@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit Console</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M9 22V10h4.5a4 4 0 0 1 0 8H9m7 4 3-8 3 8m-5-2.5h4' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <div>
+        <div class="brand-name">Audit Console</div>
+        <div class="brand-sub">Auditable financial investigation · baseline B0</div>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Views">
+      <a href="#/investigate" data-view="investigate">Investigate</a>
+      <a href="#/benchmark" data-view="benchmark">Benchmark</a>
+      <a href="#/gold" data-view="gold">Gold answers</a>
+      <a href="#/corpus" data-view="corpus">Corpus</a>
+    </nav>
+    <div class="status" id="status" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <!-- Investigate: the workspace every artifact opens in -->
+    <section class="view" id="view-investigate">
+      <div class="workspace">
+        <div class="col-main">
+          <form class="card composer" id="composer">
+            <div class="composer-head">
+              <h1>Ask a question</h1>
+              <label class="bench-pick">
+                <span>Benchmark question</span>
+                <select id="bench-select" aria-label="Benchmark question"><option value="">— ad-hoc question —</option></select>
+              </label>
+            </div>
+            <textarea id="question" rows="3" maxlength="2000" aria-label="Question"
+              placeholder="e.g. Using only information available on June 30, 2025, did Starbucks' revenue increase while its operating margin declined between fiscal 2023 and fiscal 2024?"></textarea>
+            <div class="composer-row">
+              <label class="field">
+                <span>As of (optional)</span>
+                <input type="date" id="as-of">
+              </label>
+              <fieldset class="field generators" id="generators">
+                <legend>Generator</legend>
+              </fieldset>
+              <button type="submit" class="btn-primary" id="run-btn">Run investigation</button>
+            </div>
+            <p class="hint" id="composer-hint">The baseline has no as-of filter: the date is recorded and post-cutoff evidence is
+              flagged, not removed. That is one of the failures this console exists to expose.</p>
+          </form>
+
+          <div id="progress" class="card progress" hidden></div>
+          <div id="result"></div>
+        </div>
+
+        <aside class="col-side">
+          <div class="card inspector" id="inspector">
+            <div class="empty">
+              <div class="empty-icon" aria-hidden="true">⌖</div>
+              <p>Select a citation, a retrieved unit or a calculation input to inspect its source.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-benchmark" hidden></section>
+    <section class="view" id="view-gold" hidden></section>
+    <section class="view" id="view-corpus" hidden></section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

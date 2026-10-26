@@ -1,0 +1,71 @@
+{
+  "_comment": "Initial corpus for the first working session. 'role' says why each document is here: core = the 3 starting filings; trap = deliberately included to test temporal or definition handling.",
+  "entities": [
+    {
+      "entity_id": "sbux",
+      "name": "Starbucks Corporation",
+      "cik": "0000829224",
+      "fiscal_year_rule": "52/53-week year ending on the Sunday closest to September 30",
+      "aliases": [{"name": "STARBUCKS CORP", "valid_from": null, "valid_to": null}]
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "sbux_10k_fy2023",
+      "entity_id": "sbux",
+      "role": "core",
+      "form_type": "10-K",
+      "fiscal_label": "FY2023",
+      "period_end": "2023-10-01",
+      "accession": "0000829224-23-000058",
+      "primary_document": "sbux-20231001.htm",
+      "acl": ["public"]
+    },
+    {
+      "document_id": "sbux_10k_fy2024",
+      "entity_id": "sbux",
+      "role": "core",
+      "form_type": "10-K",
+      "fiscal_label": "FY2024",
+      "period_end": "2024-09-29",
+      "accession": "0000829224-24-000057",
+      "primary_document": "sbux-20240929.htm",
+      "acl": ["public"]
+    },
+    {
+      "document_id": "sbux_10q_q2fy2025",
+      "entity_id": "sbux",
+      "role": "core",
+      "form_type": "10-Q",
+      "fiscal_label": "Q2 FY2025",
+      "period_end": "2025-03-30",
+      "accession": "0000829224-25-000034",
+      "primary_document": "sbux-20250330.htm",
+      "acl": ["public"]
+    },
+    {
+      "document_id": "sbux_er_q2fy2025",
+      "entity_id": "sbux",
+      "role": "trap",
+      "trap": "Earnings release (8-K Ex. 99.1) with non-GAAP operating margin alongside GAAP",
+      "form_type": "8-K EX-99.1",
+      "fiscal_label": "Q2 FY2025",
+      "period_end": "2025-03-30",
+      "accession": "0000829224-25-000033",
+      "primary_document": "sbux-03302025xexhibit991.htm",
+      "acl": ["public"]
+    },
+    {
+      "document_id": "sbux_10k_fy2025",
+      "entity_id": "sbux",
+      "role": "trap",
+      "trap": "Published 2025-11-14, after the 2025-06-30 cutoff; contains FY2024 comparatives and FY2025 results",
+      "form_type": "10-K",
+      "fiscal_label": "FY2025",
+      "period_end": "2025-09-28",
+      "accession": "0000829224-25-000114",
+      "primary_document": "sbux-20250928.htm",
+      "acl": ["public"]
+    }
+  ]
+}

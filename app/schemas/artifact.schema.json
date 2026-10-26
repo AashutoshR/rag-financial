@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact.schema.json",
+  "title": "Investigation artifact v1",
+  "type": "object",
+  "required": ["schema_version", "artifact_id", "question", "principal", "as_of", "snapshot", "outcome",
+               "answer_summary", "claims", "citations", "calculations", "conflicts", "definition_checks",
+               "limitations", "abstentions", "security_flags", "trace", "versions", "status"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "artifact_id": {"type": "string"},
+    "question": {"type": "string"},
+    "principal": {"type": "string"},
+    "as_of": {
+      "type": ["object", "null"],
+      "required": ["date", "interpretation", "mode"],
+      "properties": {"date": {"type": "string"}, "interpretation": {"type": "string"},
+                     "mode": {"enum": ["world", "system"]}}
+    },
+    "snapshot": {
+      "type": "object", "required": ["csn", "versions"],
+      "properties": {
+        "csn": {"type": "integer"},
+        "versions": {"type": "array", "items": {"type": "object", "required": ["document_id", "version", "sha256"]}}
+      }
+    },
+    "outcome": {"enum": ["answer", "partial_answer", "clarification", "abstention"]},
+    "answer_summary": {"type": "string"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "text", "support", "citation_ids", "calculation_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"enum": ["reported_fact", "calculated", "management_assertion", "system_inference"]},
+          "text": {"type": "string"},
+          "support": {"enum": ["supported", "partially_supported", "contradicted", "unsupported", "not_verifiable"]},
+          "citation_ids": {"type": "array", "items": {"type": "string"}},
+          "calculation_ids": {"type": "array", "items": {"type": "string"}},
+          "verification_note": {"type": "string"}
+        }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "unit_id", "kind", "document_id", "version_sha256", "published_at", "locator", "quote"],
+        "properties": {
+          "kind": {"enum": ["paragraph", "passage", "table", "cell"]},
+          "locator": {"type": "object"},
+          "quote": {"type": "string"}
+        }
+      }
+    },
+    "calculations": {
+      "type": "array",
+      "items": {"type": "object", "required": ["id", "formula", "inputs", "result", "engine"]}
+    },
+    "conflicts": {"type": "array"},
+    "definition_checks": {"type": "array"},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "abstentions": {"type": "array"},
+    "security_flags": {"type": "array"},
+    "trace": {"type": "object"},
+    "versions": {"type": "object"},
+    "status": {"enum": ["valid", "superseded", "revoked", "deleted"]}
+  }
+}

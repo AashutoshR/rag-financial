@@ -1,0 +1,369 @@
+{
+  "_comment": "Frontier-tier dev items built from real Starbucks filings (requirements §16.2, §16.4). 'family' refers to §16.4.",
+  "items": [
+    {
+      "id": "h01",
+      "group": "g_false_premise_rev",
+      "split": "dev",
+      "family": 15,
+      "category": [
+        "false_premise",
+        "calculation"
+      ],
+      "question": "Why did Starbucks' total net revenues decline in fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Revenue growth FY23→FY24",
+            "value": 0.56,
+            "unit": "%",
+            "tol_abs": 0.01,
+            "direction": "increase"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2022-10-03",
+              "end": "2023-10-01"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "false premise: revenues increased 0.56% ($35,975.6M → $36,176.2M); must correct before explaining"
+        ],
+        "checks": [
+          {
+            "id": "corrects_premise",
+            "type": "mentions",
+            "pattern": "(did not|didn't|does not|doesn't) (actually )?(decline|decrease|fall|drop)|not (a )?(decline|decrease)|premise|in fact|actually (rose|increased|grew)|rather than (declin|decreas)",
+            "why": "false premise must be corrected explicitly"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h02",
+      "group": "g_driver_sum",
+      "split": "dev",
+      "family": 13,
+      "category": [
+        "explanation_vs_evidence",
+        "calculation"
+      ],
+      "question": "Do the drivers Starbucks' management quantified fully account for the 130 basis point fiscal 2024 operating margin contraction?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Net of stated drivers",
+            "value": -0.6,
+            "unit": "pp",
+            "tol_abs": 0.005,
+            "direction": "decrease"
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "Operating margin contraction of 130 basis points was primarily due to"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "No: stated drivers net to -60 bps against a stated -130 bps (computed -137 bps); label quantified-inconsistent"
+        ],
+        "checks": [
+          {
+            "id": "states_inconsistency",
+            "type": "mentions",
+            "pattern": "inconsisten|do(es)? not (fully )?(account|sum|add up|explain)|don't (fully )?(account|sum|add up|explain)|not fully (account|explain)|net to only|leav(es|ing) .{0,40}(unexplained|unaccounted)",
+            "why": "must say the drivers don't account for the change"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h03",
+      "group": "g_sign_drift",
+      "split": "dev",
+      "family": 12,
+      "category": [
+        "restatement_check",
+        "multi_document",
+        "sign_convention"
+      ],
+      "question": "Did Starbucks' fiscal 2025 Form 10-K restate the fiscal 2024 amount of shares repurchased and retired?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "FY2024 repurchases (both filings, as displayed)",
+            "value": 1259.1,
+            "unit": "USD_millions",
+            "tol_abs": 0.05
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:StockRepurchasedAndRetiredDuringPeriodValue",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2025",
+              "concept": "us-gaap:StockRepurchasedAndRetiredDuringPeriodValue",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "No restatement: both filings display (1,259.1); only the XBRL sign differs (-1,259.1M vs +1,259.1M) — a tagging sign-convention change"
+        ],
+        "checks": [
+          {
+            "id": "no_restatement",
+            "type": "mentions",
+            "pattern": "\\b(no(t)? (a )?restate(d|ment)|did not restate|didn't restate|was not restated|wasn't restated|no restatement)\\b",
+            "why": "answer the question: not restated"
+          },
+          {
+            "id": "explains_sign",
+            "type": "mentions",
+            "pattern": "\\bsign\\b|\\bXBRL\\b|\\btag(s|ged|ging)?\\b|presentation|convention",
+            "why": "must explain the apparent difference"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h04",
+      "group": "g_bundled_disclosure",
+      "split": "dev",
+      "family": 16,
+      "category": [
+        "approximate_quantity",
+        "calculation",
+        "partial_disclosure"
+      ],
+      "question": "Approximately how much fiscal 2024 net revenue did Starbucks earn from Japan, Canada and the U.K. combined?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Combined revenue (approx.)",
+            "value": 4651.6,
+            "unit": "USD_millions",
+            "tol_abs": 32.4,
+            "approximate": true
+          }
+        ],
+        "interval": {
+          "low": 4619.3,
+          "high": 4683.9,
+          "basis": "'approximately 72%' read as [71.5%, 72.5%] × $6,460.6M other-countries revenue"
+        },
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "text": "Japan, Canada, and the U.K., which together account for approximately 72"
+            }
+          ],
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:Revenues",
+              "start": "2023-10-02",
+              "end": "2024-09-29",
+              "dims": {
+                "srt:StatementGeographicalAxis": "us-gaap:NonUsMember"
+              }
+            }
+          ]
+        ],
+        "expected_flags": [
+          "result must be labeled approximate, with an interval",
+          "no Japan-only figure"
+        ],
+        "checks": [
+          {
+            "id": "no_japan_only_figure",
+            "type": "not_mentions",
+            "pattern": "Japan (alone|by itself|on its own|only)\\b[^.]{0,40}\\$?\\d",
+            "why": "Japan alone is not disclosed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h05",
+      "group": "g_missing_link",
+      "split": "dev",
+      "family": 17,
+      "category": [
+        "should_abstain",
+        "derived_quarter"
+      ],
+      "question": "What was Starbucks' operating income in the fourth quarter of fiscal 2024?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "abstention",
+        "abstention_reason": "Q4 = FY2024 operating income (5,408.8) − nine-month YTD operating income, which is in the Q3 FY2024 10-Q — not in the corpus. The first-half figure (2,584.3) is not a substitute.",
+        "forbidden_values": [
+          {
+            "value": 2824.5,
+            "unit": "USD_millions",
+            "tol_abs": 0.5
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2024",
+              "concept": "us-gaap:OperatingIncomeLoss",
+              "start": "2023-10-02",
+              "end": "2024-09-29"
+            }
+          ]
+        ],
+        "expected_flags": [
+          "names the missing document (Q3 FY2024 10-Q or Q4 FY2024 earnings release)"
+        ],
+        "checks": [
+          {
+            "id": "names_missing_document",
+            "type": "mentions",
+            "pattern": "(third[- ]quarter|\\bQ3\\b|nine[- ]month|39[- ]week|first three quarters)[^.]{0,80}(10-Q|filing|report|year[- ]to[- ]date|\\bYTD\\b)|(10-Q|filing|report)[^.]{0,80}(third[- ]quarter|\\bQ3\\b|nine[- ]month)|fourth[- ]quarter (fiscal 2024 )?(earnings|results) (release|report)",
+            "why": "must name the missing evidence: the period and the document, close together"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h06",
+      "group": "g_bundled_disclosure_hist",
+      "split": "dev",
+      "family": 30,
+      "category": [
+        "temporal",
+        "partial_disclosure"
+      ],
+      "question": "Using only information available on June 30, 2025, what share of Starbucks' fiscal 2023 other-countries revenue came from Japan, Canada and the U.K.?",
+      "as_of": "2025-06-30",
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Share FY2023",
+            "value": 71,
+            "unit": "%",
+            "tol_abs": 0.5
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_10k_fy2023",
+              "text": "approximately 71 % of net revenues from other countries for fiscal 2023"
+            }
+          ]
+        ],
+        "future_sources": [
+          "sbux_10k_fy2025"
+        ],
+        "expected_flags": [
+          "the FY2025 10-K repeats 71% for FY2023 but is ineligible; cite the FY2023 10-K"
+        ],
+        "checks": [
+          {
+            "id": "cites_fy2023_10k",
+            "type": "cites_doc",
+            "doc": "sbux_10k_fy2023",
+            "why": "the eligible source"
+          },
+          {
+            "id": "not_cites_fy2025_10k",
+            "type": "not_cites_doc",
+            "doc": "sbux_10k_fy2025",
+            "why": "published after the cutoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "h07",
+      "group": "g_non_gaap",
+      "split": "dev",
+      "family": null,
+      "category": [
+        "definition_mismatch",
+        "non_gaap"
+      ],
+      "question": "Excluding restructuring costs, what was Starbucks' operating margin in the second quarter of fiscal 2025, and is that a GAAP measure?",
+      "as_of": null,
+      "principal": "analyst_public",
+      "expected": {
+        "outcome": "answer",
+        "values": [
+          {
+            "name": "Non-GAAP operating margin",
+            "value": 8.2,
+            "unit": "%",
+            "tol_abs": 0.06
+          }
+        ],
+        "required_evidence": [
+          [
+            {
+              "doc": "sbux_er_q2fy2025",
+              "text": "Non-GAAP operating margin",
+              "kinds": [
+                "table",
+                "paragraph"
+              ]
+            }
+          ]
+        ],
+        "expected_flags": [
+          "non-GAAP measure from the earnings release; GAAP is 6.9%; restructuring $116.2M"
+        ],
+        "checks": [
+          {
+            "id": "states_non_gaap",
+            "type": "mentions",
+            "pattern": "non-GAAP|not a GAAP|isn't a GAAP|is not (a )?GAAP",
+            "why": "must say it's a non-GAAP measure"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "gold_q01",
+  "question": "What were Starbucks' total net revenues for fiscal 2024?",
+  "principal": "analyst_public",
+  "as_of": null,
+  "snapshot": {
+    "csn": 5,
+    "versions": [
+      {
+        "document_id": "sbux_10k_fy2023",
+        "version": 1,
+        "sha256": "63fe8367071c749f617b6e85f7e3a491ad2877d271f3ec4c10517884a459bc81"
+      },
+      {
+        "document_id": "sbux_10k_fy2024",
+        "version": 1,
+        "sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331"
+      },
+      {
+        "document_id": "sbux_10q_q2fy2025",
+        "version": 1,
+        "sha256": "b037391026679149275aa4ae07986d967aaf2a941a19fb2da630ef225bd1513c"
+      },
+      {
+        "document_id": "sbux_er_q2fy2025",
+        "version": 1,
+        "sha256": "76aaa6a0114f0a9247cc4f0d4e1b809dac8f789dff5d02ae4ce10a7fce2fa34e"
+      },
+      {
+        "document_id": "sbux_10k_fy2025",
+        "version": 1,
+        "sha256": "ff4485d62485f3282a927ec52ce59f796aae916a3591028b5b12e9308f2d1ecc"
+      }
+    ]
+  },
+  "outcome": "answer",
+  "answer_summary": "Fiscal 2024 total net revenues were $36,176.2 million.",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "reported_fact",
+      "text": "Starbucks reported total net revenues of $36,176.2 million for fiscal 2024 (52 weeks ended September 29, 2024).",
+      "support": "supported",
+      "citation_ids": [
+        "e1"
+      ],
+      "calculation_ids": []
+    },
+    {
+      "id": "c2",
+      "type": "reported_fact",
+      "text": "The fiscal 2025 Form 10-K reports the same fiscal 2024 figure ($36,176.2 million) as its prior-year comparative, so the figure has not been restated.",
+      "support": "supported",
+      "citation_ids": [
+        "e2"
+      ],
+      "calculation_ids": []
+    }
+  ],
+  "citations": [
+    {
+      "id": "e1",
+      "unit_id": "sbux_10k_fy2024:v1:cell:541",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-44"
+      },
+      "quote": "36,176.2",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "36176200000"
+    },
+    {
+      "id": "e2",
+      "unit_id": "sbux_10k_fy2025:v1:cell:539",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2025",
+      "form_type": "10-K",
+      "accession": "0000829224-25-000114",
+      "version_sha256": "ff4485d62485f3282a927ec52ce59f796aae916a3591028b5b12e9308f2d1ecc",
+      "published_at": "2025-11-15T02:08:41.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 46,
+        "printed_page": "43",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2025:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-61"
+      },
+      "quote": "36,176.2",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "36176200000"
+    }
+  ],
+  "calculations": [],
+  "conflicts": [],
+  "definition_checks": [],
+  "limitations": [],
+  "abstentions": [],
+  "security_flags": [],
+  "trace": {
+    "author": "hand-written gold",
+    "steps": null,
+    "tokens": 0,
+    "cost_usd": 0
+  },
+  "versions": {
+    "calc_engine": "calc@0.1.0",
+    "parser": "ixbrl-html@0.1.0"
+  },
+  "status": "valid",
+  "created_at": "2026-10-26T02:34:29+00:00"
+}

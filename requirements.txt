@@ -1,0 +1,13 @@
+# Runtime
+requests==2.34.2
+charset-normalizer==3.5.2
+beautifulsoup4==4.15.0
+rank-bm25==0.2.2
+jsonschema==4.26.0
+fastapi==0.161.1
+uvicorn[standard]==0.54.0
+# Optional: only for the Claude API generator (--generator llm / "Claude API" in the console)
+anthropic==2.1.0
+# Tests
+pytest==9.1.1
+httpx==0.28.1

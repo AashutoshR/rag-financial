@@ -1,0 +1,1315 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "gold_q07",
+  "question": "What reasons did management give for Starbucks' fiscal 2024 operating margin decline, and do the reported cost lines support those reasons?",
+  "principal": "analyst_public",
+  "as_of": null,
+  "snapshot": {
+    "csn": 5,
+    "versions": [
+      {
+        "document_id": "sbux_10k_fy2023",
+        "version": 1,
+        "sha256": "63fe8367071c749f617b6e85f7e3a491ad2877d271f3ec4c10517884a459bc81"
+      },
+      {
+        "document_id": "sbux_10k_fy2024",
+        "version": 1,
+        "sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331"
+      },
+      {
+        "document_id": "sbux_10q_q2fy2025",
+        "version": 1,
+        "sha256": "b037391026679149275aa4ae07986d967aaf2a941a19fb2da630ef225bd1513c"
+      },
+      {
+        "document_id": "sbux_er_q2fy2025",
+        "version": 1,
+        "sha256": "76aaa6a0114f0a9247cc4f0d4e1b809dac8f789dff5d02ae4ce10a7fce2fa34e"
+      },
+      {
+        "document_id": "sbux_10k_fy2025",
+        "version": 1,
+        "sha256": "ff4485d62485f3282a927ec52ce59f796aae916a3591028b5b12e9308f2d1ecc"
+      }
+    ]
+  },
+  "outcome": "answer",
+  "answer_summary": "Operating margin fell 1.37 pp (137 bps) (16.32% → 14.95%). Management cites wage and benefit investments, deleverage and promotions, partly offset by pricing and efficiencies, but its quantified drivers net to only -60 bps. The income statement shows store operating expenses as the largest drag (-1.338 pp). The non-recurrence of a fiscal 2023 asset-sale gain (-0.254 pp) goes unmentioned. Wages and benefits barely moved as a share of revenue (+0.13 pp (+13 bps)). The explanation is therefore only partially supported.",
+  "claims": [
+    {
+      "id": "c1",
+      "type": "management_assertion",
+      "text": "Management attributes the 130 bps operating-margin contraction primarily to investments in store partner wages and benefits (~140 bps), deleverage (~130 bps) and increased promotional activity (~100 bps), partially offset by pricing (~180 bps) and in-store operational efficiencies (~130 bps).",
+      "support": "supported",
+      "citation_ids": [
+        "e21"
+      ],
+      "calculation_ids": [],
+      "verification_note": "'Supported' here means the filing says this; whether the evidence supports the explanation is c6."
+    },
+    {
+      "id": "c2",
+      "type": "calculated",
+      "text": "Operating margin fell 1.37 pp (137 bps), from 16.32% to 14.95%.",
+      "support": "supported",
+      "citation_ids": [
+        "e20",
+        "e19",
+        "e2",
+        "e1"
+      ],
+      "calculation_ids": [
+        "k2",
+        "k3",
+        "k4"
+      ]
+    },
+    {
+      "id": "c3",
+      "type": "calculated",
+      "text": "Management's quantified drivers net to -60 bps, so about 70 bps of the stated 130 bps contraction is not accounted for by the listed items.",
+      "support": "supported",
+      "citation_ids": [
+        "e21"
+      ],
+      "calculation_ids": [
+        "k5"
+      ]
+    },
+    {
+      "id": "c4",
+      "type": "calculated",
+      "text": "Store operating expenses rose from 40.92% to 42.26% of total net revenues, lowering margin by 1.338 pp — the largest single contributor. Product and distribution costs fell as a share of revenue, raising margin by 0.807 pp.",
+      "support": "supported",
+      "citation_ids": [
+        "e5",
+        "e6",
+        "e3",
+        "e4"
+      ],
+      "calculation_ids": [
+        "k1"
+      ]
+    },
+    {
+      "id": "c5",
+      "type": "calculated",
+      "text": "Fiscal 2023 included a $91.3 million gain from sale of assets with no fiscal 2024 equivalent; its absence lowered the margin comparison by 0.254 pp. Management's driver list does not mention it.",
+      "support": "supported",
+      "citation_ids": [
+        "e18",
+        "e21"
+      ],
+      "calculation_ids": [
+        "k1"
+      ]
+    },
+    {
+      "id": "c6",
+      "type": "system_inference",
+      "text": "Management's explanation is only partially supported. Its direction — store-level cost pressure — is consistent with the rise in store operating expenses. But the size of individual drivers can't be verified from reported line items: total wages and benefits moved only +0.13 pp (+13 bps) as a share of revenue, against a stated ~140 bps impact. The attribution is likely measured before the offsetting efficiencies, on a basis the filing does not disclose. The filing can't establish that these factors caused the whole decline.",
+      "support": "partially_supported",
+      "citation_ids": [
+        "e21",
+        "e22",
+        "e23"
+      ],
+      "calculation_ids": [
+        "k1",
+        "k5",
+        "k8"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "id": "e1",
+      "unit_id": "sbux_10k_fy2024:v1:cell:541",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-44"
+      },
+      "quote": "36,176.2",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "36176200000"
+    },
+    {
+      "id": "e2",
+      "unit_id": "sbux_10k_fy2024:v1:cell:542",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Total net revenues",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-45"
+      },
+      "quote": "35,975.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:Revenues",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "35975600000"
+    },
+    {
+      "id": "e3",
+      "unit_id": "sbux_10k_fy2024:v1:cell:544",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Product and distribution costs",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-47"
+      },
+      "quote": "11,180.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:ProductionAndDistributionCosts",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "11180600000"
+    },
+    {
+      "id": "e4",
+      "unit_id": "sbux_10k_fy2024:v1:cell:545",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Product and distribution costs",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-48"
+      },
+      "quote": "11,409.1",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:ProductionAndDistributionCosts",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "11409100000"
+    },
+    {
+      "id": "e5",
+      "unit_id": "sbux_10k_fy2024:v1:cell:547",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Store operating expenses",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-50"
+      },
+      "quote": "15,286.5",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "sbux:StoreOperatingExpenses",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "15286500000"
+    },
+    {
+      "id": "e6",
+      "unit_id": "sbux_10k_fy2024:v1:cell:548",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Store operating expenses",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-51"
+      },
+      "quote": "14,720.3",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "sbux:StoreOperatingExpenses",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "14720300000"
+    },
+    {
+      "id": "e7",
+      "unit_id": "sbux_10k_fy2024:v1:cell:550",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Other operating expenses",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-53"
+      },
+      "quote": "565.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OtherCostAndExpenseOperating",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "565600000"
+    },
+    {
+      "id": "e8",
+      "unit_id": "sbux_10k_fy2024:v1:cell:551",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Other operating expenses",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-54"
+      },
+      "quote": "539.4",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OtherCostAndExpenseOperating",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "539400000"
+    },
+    {
+      "id": "e9",
+      "unit_id": "sbux_10k_fy2024:v1:cell:553",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Depreciation and amortization expenses",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-56"
+      },
+      "quote": "1,512.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:DepreciationAndAmortization",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "1512600000"
+    },
+    {
+      "id": "e10",
+      "unit_id": "sbux_10k_fy2024:v1:cell:554",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Depreciation and amortization expenses",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-57"
+      },
+      "quote": "1,362.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:DepreciationAndAmortization",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "1362600000"
+    },
+    {
+      "id": "e11",
+      "unit_id": "sbux_10k_fy2024:v1:cell:556",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "General and administrative expenses",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-59"
+      },
+      "quote": "2,523.3",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:GeneralAndAdministrativeExpense",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "2523300000"
+    },
+    {
+      "id": "e12",
+      "unit_id": "sbux_10k_fy2024:v1:cell:557",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "General and administrative expenses",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-60"
+      },
+      "quote": "2,441.3",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:GeneralAndAdministrativeExpense",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "2441300000"
+    },
+    {
+      "id": "e13",
+      "unit_id": "sbux_10k_fy2024:v1:cell:559",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Restructuring and impairments",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-62"
+      },
+      "quote": "—",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:RestructuringSettlementAndImpairmentProvisions",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "0"
+    },
+    {
+      "id": "e14",
+      "unit_id": "sbux_10k_fy2024:v1:cell:560",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Restructuring and impairments",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-63"
+      },
+      "quote": "21.8",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:RestructuringSettlementAndImpairmentProvisions",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "21800000"
+    },
+    {
+      "id": "e15",
+      "unit_id": "sbux_10k_fy2024:v1:cell:565",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Income from equity investees",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-68"
+      },
+      "quote": "301.2",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:IncomeLossFromEquityMethodInvestments",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "301200000"
+    },
+    {
+      "id": "e16",
+      "unit_id": "sbux_10k_fy2024:v1:cell:566",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Income from equity investees",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-69"
+      },
+      "quote": "298.4",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:IncomeLossFromEquityMethodInvestments",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "298400000"
+    },
+    {
+      "id": "e17",
+      "unit_id": "sbux_10k_fy2024:v1:cell:568",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Gain from sale of assets",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-71"
+      },
+      "quote": "—",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:GainLossOnDispositionOfAssets1",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "0"
+    },
+    {
+      "id": "e18",
+      "unit_id": "sbux_10k_fy2024:v1:cell:569",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Gain from sale of assets",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-72"
+      },
+      "quote": "91.3",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:GainLossOnDispositionOfAssets1",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "91300000"
+    },
+    {
+      "id": "e19",
+      "unit_id": "sbux_10k_fy2024:v1:cell:571",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Operating income",
+        "column": "Sep 29, 2024",
+        "ixbrl_element_id": "f-74"
+      },
+      "quote": "5,408.8",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OperatingIncomeLoss",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "5408800000"
+    },
+    {
+      "id": "e20",
+      "unit_id": "sbux_10k_fy2024:v1:cell:572",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "html_page": 53,
+        "printed_page": "50",
+        "dom_anchor": "u-t-22",
+        "table_id": "sbux_10k_fy2024:v1:table:20",
+        "table_caption": "CONSOLIDATED STATEMENTS OF EARNINGS",
+        "row": "Operating income",
+        "column": "Oct 1, 2023",
+        "ixbrl_element_id": "f-75"
+      },
+      "quote": "5,870.8",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:OperatingIncomeLoss",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "5870800000"
+    },
+    {
+      "id": "e21",
+      "unit_id": "sbux_10k_fy2024:v1:paragraph:335",
+      "kind": "paragraph",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations",
+        "heading": "Financial Highlights",
+        "html_page": 39,
+        "printed_page": "36",
+        "dom_anchor": "u-b-819"
+      },
+      "quote": "• Consolidated operating income decreased to $5.4 billion in fiscal 2024 compared to $5.9 billion in fiscal 2023. Fiscal 2024 operating margin was 15.0% compared to 16.3% in fiscal 2023. Operating margin contraction of 130 basis points was primarily due to investments in store partner wages and benefits (approximately 140 basis points), deleverage (approximately 130 basis points), and increased promotional activity (approximately 100 basis points). These decreases were partially offset by pricing (approximately 180 basis points) and in-store operational efficiencies (approximately 130 basis po"
+    },
+    {
+      "id": "e22",
+      "unit_id": "sbux_10k_fy2024:v1:cell:1476",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "Note 7: Supplemental Balance Sheet and Statement of Earnings Information (in millions)",
+        "html_page": 77,
+        "printed_page": "74",
+        "dom_anchor": "u-t-40",
+        "table_id": "sbux_10k_fy2024:v1:table:38",
+        "table_caption": "Note 7: Supplemental Balance Sheet and Statement of Earnings Information (in millions)",
+        "row": "Wages and benefits",
+        "column": "Year Ended Sep 29, 2024",
+        "ixbrl_element_id": "f-1110"
+      },
+      "quote": "8,828.6",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:LaborAndRelatedExpense",
+      "xbrl_period": {
+        "start": "2023-10-02",
+        "end": "2024-09-29",
+        "instant": null
+      },
+      "xbrl_value": "8828600000"
+    },
+    {
+      "id": "e23",
+      "unit_id": "sbux_10k_fy2024:v1:cell:1477",
+      "kind": "cell",
+      "document_id": "sbux_10k_fy2024",
+      "form_type": "10-K",
+      "accession": "0000829224-24-000057",
+      "version_sha256": "17fd58d66da65b77ef3f083a3b2f611984982a9fb37b91e8addd05618f1ea331",
+      "published_at": "2024-11-21T02:08:06.000Z",
+      "locator": {
+        "section": "Item 8. Financial Statements and Supplementary Data",
+        "heading": "Note 7: Supplemental Balance Sheet and Statement of Earnings Information (in millions)",
+        "html_page": 77,
+        "printed_page": "74",
+        "dom_anchor": "u-t-40",
+        "table_id": "sbux_10k_fy2024:v1:table:38",
+        "table_caption": "Note 7: Supplemental Balance Sheet and Statement of Earnings Information (in millions)",
+        "row": "Wages and benefits",
+        "column": "Year Ended Oct 1, 2023",
+        "ixbrl_element_id": "f-1111"
+      },
+      "quote": "8,733.4",
+      "scale": "millions",
+      "currency": "USD",
+      "xbrl_concept": "us-gaap:LaborAndRelatedExpense",
+      "xbrl_period": {
+        "start": "2022-10-03",
+        "end": "2023-10-01",
+        "instant": null
+      },
+      "xbrl_value": "8733400000"
+    }
+  ],
+  "calculations": [
+    {
+      "id": "k1",
+      "formula": "Δmargin = Σ sign_i × (line_i,new / revenue_new − line_i,old / revenue_old); sign = −1 for expenses, +1 for income items",
+      "inputs": [
+        {
+          "name": "revenue_fy2024",
+          "value": "36176200000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e1",
+          "unit_id": "sbux_10k_fy2024:v1:cell:541"
+        },
+        {
+          "name": "revenue_fy2023",
+          "value": "35975600000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e2",
+          "unit_id": "sbux_10k_fy2024:v1:cell:542"
+        },
+        {
+          "name": "Product and distribution costs FY2024",
+          "value": "11180600000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e3",
+          "unit_id": "sbux_10k_fy2024:v1:cell:544"
+        },
+        {
+          "name": "Product and distribution costs FY2023",
+          "value": "11409100000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e4",
+          "unit_id": "sbux_10k_fy2024:v1:cell:545"
+        },
+        {
+          "name": "Store operating expenses FY2024",
+          "value": "15286500000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e5",
+          "unit_id": "sbux_10k_fy2024:v1:cell:547"
+        },
+        {
+          "name": "Store operating expenses FY2023",
+          "value": "14720300000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e6",
+          "unit_id": "sbux_10k_fy2024:v1:cell:548"
+        },
+        {
+          "name": "Other operating expenses FY2024",
+          "value": "565600000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e7",
+          "unit_id": "sbux_10k_fy2024:v1:cell:550"
+        },
+        {
+          "name": "Other operating expenses FY2023",
+          "value": "539400000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e8",
+          "unit_id": "sbux_10k_fy2024:v1:cell:551"
+        },
+        {
+          "name": "Depreciation and amortization expenses FY2024",
+          "value": "1512600000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e9",
+          "unit_id": "sbux_10k_fy2024:v1:cell:553"
+        },
+        {
+          "name": "Depreciation and amortization expenses FY2023",
+          "value": "1362600000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e10",
+          "unit_id": "sbux_10k_fy2024:v1:cell:554"
+        },
+        {
+          "name": "General and administrative expenses FY2024",
+          "value": "2523300000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e11",
+          "unit_id": "sbux_10k_fy2024:v1:cell:556"
+        },
+        {
+          "name": "General and administrative expenses FY2023",
+          "value": "2441300000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e12",
+          "unit_id": "sbux_10k_fy2024:v1:cell:557"
+        },
+        {
+          "name": "Restructuring and impairments FY2024",
+          "value": "0",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e13",
+          "unit_id": "sbux_10k_fy2024:v1:cell:559"
+        },
+        {
+          "name": "Restructuring and impairments FY2023",
+          "value": "21800000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e14",
+          "unit_id": "sbux_10k_fy2024:v1:cell:560"
+        },
+        {
+          "name": "Income from equity investees FY2024",
+          "value": "301200000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e15",
+          "unit_id": "sbux_10k_fy2024:v1:cell:565"
+        },
+        {
+          "name": "Income from equity investees FY2023",
+          "value": "298400000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e16",
+          "unit_id": "sbux_10k_fy2024:v1:cell:566"
+        },
+        {
+          "name": "Gain from sale of assets FY2024",
+          "value": "0",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e17",
+          "unit_id": "sbux_10k_fy2024:v1:cell:568"
+        },
+        {
+          "name": "Gain from sale of assets FY2023",
+          "value": "91300000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e18",
+          "unit_id": "sbux_10k_fy2024:v1:cell:569"
+        }
+      ],
+      "result": {
+        "value": "-0.01367572021598310624447854048",
+        "unit": "ratio_difference",
+        "display": "-1.37 pp"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0",
+      "contributions": [
+        {
+          "line": "Product and distribution costs",
+          "share_of_revenue_new": "0.3090595474372653844240135780",
+          "share_of_revenue_old": "0.3171343910872924982488130844",
+          "contribution_to_margin_change_pp": "0.807",
+          "direction": "raised margin"
+        },
+        {
+          "line": "Store operating expenses",
+          "share_of_revenue_new": "0.4225568191241755629391699515",
+          "share_of_revenue_old": "0.4091745516405563771000344678",
+          "contribution_to_margin_change_pp": "-1.338",
+          "direction": "lowered margin"
+        },
+        {
+          "line": "Other operating expenses",
+          "share_of_revenue_new": "0.01563458848635290605425666598",
+          "share_of_revenue_old": "0.01499349559145643158140517462",
+          "contribution_to_margin_change_pp": "-0.064",
+          "direction": "lowered margin"
+        },
+        {
+          "line": "Depreciation and amortization expenses",
+          "share_of_revenue_new": "0.04181202005738579508074369337",
+          "share_of_revenue_old": "0.03787567128831763750986779929",
+          "contribution_to_margin_change_pp": "-0.394",
+          "direction": "lowered margin"
+        },
+        {
+          "line": "General and administrative expenses",
+          "share_of_revenue_new": "0.06975027780695595446730170665",
+          "share_of_revenue_old": "0.06785988280945974493823591545",
+          "contribution_to_margin_change_pp": "-0.189",
+          "direction": "lowered margin"
+        },
+        {
+          "line": "Restructuring and impairments",
+          "share_of_revenue_new": "0",
+          "share_of_revenue_old": "0.0006059662660247501084068090595",
+          "contribution_to_margin_change_pp": "0.061",
+          "direction": "raised margin"
+        },
+        {
+          "line": "Income from equity investees",
+          "share_of_revenue_new": "0.008325915933680154355626074602",
+          "share_of_revenue_old": "0.008294510723935111575623478135",
+          "contribution_to_margin_change_pp": "0.003",
+          "direction": "raised margin"
+        },
+        {
+          "line": "Gain from sale of assets",
+          "share_of_revenue_new": "0",
+          "share_of_revenue_old": "0.002537831196699985545758792070",
+          "contribution_to_margin_change_pp": "-0.254",
+          "direction": "lowered margin"
+        }
+      ]
+    },
+    {
+      "id": "k2",
+      "formula": "operating_margin_fy2024 = operating_income_fy2024 / revenue_fy2024",
+      "inputs": [
+        {
+          "name": "operating_income_fy2024",
+          "value": "5408800000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e19",
+          "unit_id": "sbux_10k_fy2024:v1:cell:571"
+        },
+        {
+          "name": "revenue_fy2024",
+          "value": "36176200000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e1",
+          "unit_id": "sbux_10k_fy2024:v1:cell:541"
+        }
+      ],
+      "result": {
+        "value": "0.1495126630215445513901404791",
+        "unit": "ratio",
+        "display": "14.95%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k3",
+      "formula": "operating_margin_fy2023 = operating_income_fy2023 / revenue_fy2023",
+      "inputs": [
+        {
+          "name": "operating_income_fy2023",
+          "value": "5870800000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e20",
+          "unit_id": "sbux_10k_fy2024:v1:cell:572"
+        },
+        {
+          "name": "revenue_fy2023",
+          "value": "35975600000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e2",
+          "unit_id": "sbux_10k_fy2024:v1:cell:542"
+        }
+      ],
+      "result": {
+        "value": "0.1631883832375276576346190196",
+        "unit": "ratio",
+        "display": "16.32%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k4",
+      "formula": "operating_margin_change = k2 - k3",
+      "inputs": [],
+      "result": {
+        "value": "-0.0136757202159831062444785405",
+        "unit": "ratio_difference",
+        "display": "-1.37 pp (-137 bps)"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [
+        "inputs are calculations k2 and k3"
+      ],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k5",
+      "formula": "sum of management-stated driver impacts (bps)",
+      "inputs": [
+        {
+          "name": "wages and benefits investment",
+          "value": "-140",
+          "unit": "bps",
+          "period": "FY2024 vs FY2023",
+          "citation_id": "e21",
+          "unit_id": "sbux_10k_fy2024:v1:paragraph:335"
+        },
+        {
+          "name": "deleverage",
+          "value": "-130",
+          "unit": "bps",
+          "period": "FY2024 vs FY2023",
+          "citation_id": "e21",
+          "unit_id": "sbux_10k_fy2024:v1:paragraph:335"
+        },
+        {
+          "name": "promotional activity",
+          "value": "-100",
+          "unit": "bps",
+          "period": "FY2024 vs FY2023",
+          "citation_id": "e21",
+          "unit_id": "sbux_10k_fy2024:v1:paragraph:335"
+        },
+        {
+          "name": "pricing",
+          "value": "180",
+          "unit": "bps",
+          "period": "FY2024 vs FY2023",
+          "citation_id": "e21",
+          "unit_id": "sbux_10k_fy2024:v1:paragraph:335"
+        },
+        {
+          "name": "in-store operational efficiencies",
+          "value": "130",
+          "unit": "bps",
+          "period": "FY2024 vs FY2023",
+          "citation_id": "e21",
+          "unit_id": "sbux_10k_fy2024:v1:paragraph:335"
+        }
+      ],
+      "result": {
+        "value": "-60",
+        "unit": "bps",
+        "display": "-60 bps"
+      },
+      "notes": [
+        "Driver values are management estimates ('approximately'); methodology not disclosed."
+      ],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k6",
+      "formula": "wages_benefits_share_fy2024 = wages_and_benefits_fy2024 / revenue_fy2024",
+      "inputs": [
+        {
+          "name": "wages_and_benefits_fy2024",
+          "value": "8828600000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e22",
+          "unit_id": "sbux_10k_fy2024:v1:cell:1476"
+        },
+        {
+          "name": "revenue_fy2024",
+          "value": "36176200000",
+          "unit": "USD",
+          "period": "2023-10-02..2024-09-29",
+          "citation_id": "e1",
+          "unit_id": "sbux_10k_fy2024:v1:cell:541"
+        }
+      ],
+      "result": {
+        "value": "0.2440444269989661711290848680",
+        "unit": "ratio",
+        "display": "24.40%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k7",
+      "formula": "wages_benefits_share_fy2023 = wages_and_benefits_fy2023 / revenue_fy2023",
+      "inputs": [
+        {
+          "name": "wages_and_benefits_fy2023",
+          "value": "8733400000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e23",
+          "unit_id": "sbux_10k_fy2024:v1:cell:1477"
+        },
+        {
+          "name": "revenue_fy2023",
+          "value": "35975600000",
+          "unit": "USD",
+          "period": "2022-10-03..2023-10-01",
+          "citation_id": "e2",
+          "unit_id": "sbux_10k_fy2024:v1:cell:542"
+        }
+      ],
+      "result": {
+        "value": "0.2427589810871813117779828550",
+        "unit": "ratio",
+        "display": "24.28%"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [],
+      "engine": "calc@0.1.0"
+    },
+    {
+      "id": "k8",
+      "formula": "wages_benefits_share_change = k6 - k7",
+      "inputs": [],
+      "result": {
+        "value": "0.0012854459117848593511020130",
+        "unit": "ratio_difference",
+        "display": "+0.13 pp (+13 bps)"
+      },
+      "rounding": "ROUND_HALF_EVEN for display only; result kept at full precision",
+      "notes": [
+        "inputs are calculations k6 and k7"
+      ],
+      "engine": "calc@0.1.0"
+    }
+  ],
+  "conflicts": [
+    {
+      "type": "internal_inconsistency",
+      "fact": "FY2024 operating margin drivers",
+      "values": {
+        "stated total": "-130 bps",
+        "sum of stated drivers (k5)": "-60 bps",
+        "calculated change (k4)": "-1.37 pp (-137 bps)"
+      },
+      "citations": [
+        "e21"
+      ],
+      "resolution": "Not resolvable from the filing; reported as a limitation."
+    }
+  ],
+  "definition_checks": [
+    {
+      "metric": "operating income",
+      "finding": "Starbucks' GAAP operating income includes income from equity investees and gains from asset sales; both are included in the decomposition as income items.",
+      "citations": [
+        "e15"
+      ]
+    }
+  ],
+  "limitations": [
+    "Driver impacts are management estimates with an undisclosed methodology; they can't be reconciled to line items.",
+    "'Wages and benefits' in Note 7 covers store operating expenses only; labor in other lines is not broken out.",
+    "Segment-level drivers (North America, International) are not analyzed in this artifact."
+  ],
+  "abstentions": [],
+  "security_flags": [],
+  "trace": {
+    "author": "hand-written gold",
+    "steps": null,
+    "tokens": 0,
+    "cost_usd": 0
+  },
+  "versions": {
+    "calc_engine": "calc@0.1.0",
+    "parser": "ixbrl-html@0.1.0"
+  },
+  "status": "valid",
+  "created_at": "2026-10-26T02:34:29+00:00"
+}
