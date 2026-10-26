@@ -1,6 +1,6 @@
 # Auditable Financial Investigation Platform
 
-[![tests](https://github.com/AashutoshR/rag-financial-capstone/actions/workflows/tests.yml/badge.svg)](https://github.com/AashutoshR/rag-financial-capstone/actions/workflows/tests.yml)
+[![tests](https://github.com/AashutoshR/rag-financial/actions/workflows/tests.yml/badge.svg)](https://github.com/AashutoshR/rag-financial/actions/workflows/tests.yml)
 
 A retrieval-augmented system for investigating financial questions across SEC filings, where **every answer is an
 inspectable artifact**: claims, citations down to the table cell, calculations executed in code, conflicts, and
@@ -32,8 +32,8 @@ Requires Python 3.12+.
 **Windows (PowerShell)**
 
 ```powershell
-git clone https://github.com/AashutoshR/rag-financial-capstone.git
-cd rag-financial-capstone
+git clone https://github.com/AashutoshR/rag-financial.git
+cd rag-financial
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m app.bootstrap
@@ -43,8 +43,8 @@ python -m venv .venv
 **macOS / Linux**
 
 ```bash
-git clone https://github.com/AashutoshR/rag-financial-capstone.git
-cd rag-financial-capstone
+git clone https://github.com/AashutoshR/rag-financial.git
+cd rag-financial
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python -m app.bootstrap
